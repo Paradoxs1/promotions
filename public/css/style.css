@@ -1,0 +1,592 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -o-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+}
+body {
+    line-height: 1;
+    font: normal 16px/18px 'Raleway';
+    background-color: #f7f7f8;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after{
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*:focus, *:active {
+    outline: none !important;
+    text-decoration: none !important;
+}
+a,
+a:hover{
+    text-decoration: none;
+}
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: block;
+    overflow: hidden;
+    font-size: 0;
+}
+.clearfix:after {
+    clear: both;
+}
+.left{
+    float: left;
+}
+.right{
+    float: right;
+}
+.container{
+    max-width: 1170px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+
+.toggle-block{
+    display: none;
+    height: 49px;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    cursor: pointer;
+    background: #007bb5;
+    border: 2px solid #0280bb;
+    color: #fff;
+}
+.toggle-block span{
+    margin-right: 10px;
+    font: bold 24px/50px 'Raleway';
+    color: #fff;
+}
+.toggle-mnu {
+    display: inline-block;
+    width: 28px;
+    height: 28px;
+    vertical-align: middle;
+}
+.toggle-mnu span:after,
+.toggle-mnu span:before{
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 9px;
+}
+.toggle-mnu span:after{
+    top: 18px;
+}
+.toggle-mnu span{
+    position: relative;
+    display: block;
+}
+.toggle-mnu span,
+.toggle-mnu span:after,
+.toggle-mnu span:before{
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    transition: all 0.3s;
+    backface-visibility: hidden;
+    border-radius: 2px;
+}
+.toggle-mnu.on span{
+    background-color: transparent;
+}
+.toggle-mnu.on span:before{
+    transform: rotate(45deg) translate(-1px, 0px);
+}
+.toggle-mnu.on span:after{
+    transform: rotate(-45deg) translate(6px, -7px);
+}
+
+/*****************HEADER********************/
+
+header{
+    padding: 10px 0;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    right: 0;
+    top: 0;
+    background-image: linear-gradient(to bottom, #3c3c3c 0%, #222 100%);
+
+    -webkit-box-shadow: 0 2px 20px #888;
+    -moz-box-shadow: 0 2px 20px #888;
+    -ms-box-shadow: 0 2px 20px #888;
+    -o-box-shadow: 0 2px 20px #888;
+    box-shadow: 0 2px 20px #888;
+}
+header .right{
+    font-size: 0;
+    padding-top: 15px;
+}
+header .right li{
+    display: inline-block;
+    vertical-align: top;
+}
+header .right li+li{
+    margin-left: 20px;
+}
+header .right li a{
+    font: normal 18px/20px 'Raleway';
+    color: #fff;
+    text-transform: uppercase;
+
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+header .right li a:hover{
+    color: #edfd40;
+}
+.search{
+    position: relative;
+    display: table;
+    margin: 0 auto;
+    max-width: 300px;
+    width: 100%;
+    padding-top: 5px;
+}
+.button-search{
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+    color: #444;
+    line-height: 40px;
+    padding-left: 10px;
+    cursor: pointer;
+    background: #f5f5f5 url('../images/search.png') no-repeat 98% center;
+
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+
+.button-search:hover{
+    background-color: #ccc;
+}
+.search-block{
+    display: none;
+    position: absolute;
+    left: 0;
+    top: 50px;
+    width: 400px;
+    background-color: #fff;
+    border-radius: 5px;
+    border: 1px solid #888;
+}
+.search-block-top, .search-block-bottom{
+    padding: 10px;
+}
+.search-block-top input{
+    width: 100%;
+    border-radius: 3px;
+    height: 30px;
+    border: 1px solid #9d9d9d;
+    padding-left: 10px;
+    font: normal 14px/30px 'Arial';
+    color: #666;
+}
+.search-block-top input::-webkit-input-placeholder {color:#666; font: normal 14px/30px 'Arial';}
+.search-block-top input::-moz-placeholder          {color:#666; font: normal 14px/30px 'Arial';}
+.search-block-top input:-moz-placeholder           {color:#666; font: normal 14px/30px 'Arial';}
+.search-block-top input:-ms-input-placeholder      {color:#666; font: normal 14px/30px 'Arial';}
+.search-block-middle{
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+}
+.search-block-bottom input[type="submit"]{
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #2ca02c;
+    background-color: #2ca02c;
+    padding: 0 10px;
+    height: 30px;
+    font: normal 16px/28px 'Raleway';
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.search-block-bottom input[type="submit"]:hover{
+    background-color: #2bb02c;
+}
+.search-block-bottom a{
+    display: inline-block;
+    vertical-align: top;
+    border-radius: 5px;
+    border: 1px solid #d62728;
+    background-color: #d62728;
+    padding: 0 10px;
+    height: 30px;
+    font: normal 16px/28px 'Raleway';
+    color: #fff;
+    text-align: center;
+
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.search-block-bottom a:hover{
+    background-color: #ff2728;
+}
+.search-block-middle{
+    padding: 5px 0;
+}
+.fa-minus, .fa-plus, .search-block-middle label{
+    cursor: pointer;
+    line-height: 20px;
+}
+.search-block-middle label{
+    color: #666;
+    font-size: 18px;
+    margin-left: 5px;
+}
+.search-block-middle input[type="checkbox"]{
+    position: relative;
+    top: -1px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    line-height: 20px;
+}
+.category-btn.active .fa-minus{
+    display: inline-block;
+}
+.category-btn.active .fa-plus, .category-btn .fa-minus{
+    display: none;
+}
+.category .category{
+    display: none;
+    margin-left: 18.5px;
+}
+.category>p{
+    padding: 5px 10px;
+
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.category>p:hover{
+    background-color: #f7f7f8;
+}
+.category-btn{
+    font-size: 14px;
+    margin-right: 7px;
+}
+
+/******************MAIN*********************/
+
+main{
+    margin-top: 73px;
+}
+.slider-title{
+    padding: 50px 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 34px;
+    font-weight: bold;
+}
+.slider-market{
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 10px;
+    border-top: 2px solid #000;
+    border-bottom: 2px solid #000;
+}
+.slider-market img{
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.slider-market img:hover{
+    opacity: .7;
+}
+h1{
+    padding: 80px 0 40px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 40px;
+    text-transform: uppercase;
+}
+.tabs{
+    font-size: 0;
+    max-width: 400px;
+    width: 100%;
+    text-align: right;
+}
+.tab{
+    display: inline-block;
+    vertical-align: top;
+    height: 32px;
+    max-width: 170px;
+    width: 100%;
+    font-size: 16px;
+    line-height: 32px;
+    border: 1px solid #222;
+    text-align: left;
+    padding-left: 10px;
+    cursor: pointer;
+    background-color: #fff;
+    
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.tab:hover{
+    background-color: #ccc;
+}
+.tab i{
+    margin-right: 5px;
+}
+.tabs .active{
+    background-color: #ccc;
+}
+.tab_item{
+    display: none;
+    border-top: 2px solid #222;
+    border-bottom: 2px solid #222;
+}
+.tab_item:first-child{
+    display: block;
+}
+.main-content{
+    padding: 20px 0;
+}
+.map{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 600px;
+}
+.product-container{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+
+    -webkit-justify-content: space-around;
+    -moz-justify-content: space-around;
+    -ms-justify-content: space-around;
+    justify-content: space-around;
+}
+.product-block{
+    max-width: 340px;
+    width: 100%;
+    margin: 20px 0;
+    border: 1px solid #888;
+    border-radius: 5px;
+    background-color: #fff;
+
+    -webkit-box-shadow: 0 0 6px #888;
+    -moz-box-shadow: 0 0 6px #888;
+    -ms-box-shadow: 0 0 6px #888;
+    -o-box-shadow: 0 0 6px #888;
+    box-shadow: 0 0 6px #888;
+
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.product-block:hover{
+    -webkit-box-shadow: 0 0 20px #888;
+    -moz-box-shadow: 0 0 20px #888;
+    -ms-box-shadow: 0 0 20px #888;
+    -o-box-shadow: 0 0 20px #888;
+    box-shadow: 0 0 20px #888;
+}
+.product-img{
+    text-align: center;
+    line-height: 300px;
+    border-top: 1px solid #888;
+    border-bottom: 1px solid #888;
+}
+.product-img img{
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
+    vertical-align: middle;
+}
+.product-top{
+    padding: 5px 0 0 10px;
+    background-color: #ededed;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.product-top .left{
+    margin-right: 10px;
+}
+.product-top p{
+    padding-top: 5px;
+}
+.product-top .sale{
+    font-size: 17px;
+    font-weight: 600;
+}
+.product-top .date{
+    color: #777;
+    font-size: 14px;
+}
+.product-info{
+    text-align: center;
+    padding: 5px 10px 15px 5px;
+    background-color: #ededed;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+.product-title{
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 20px;
+    margin-bottom: 10px;
+}
+.price-new, .price-old{
+    display: inline-block;
+    vertical-align: top;
+    line-height: 40px;
+}
+.price-new span{
+    font-size: 22px;
+}
+.price-old span{
+    font-size: 18px;
+}
+.price-new span, .price-old span{
+    position: relative;
+    top: -7px;
+}
+.price-new{
+    margin-right: 10px;
+    color: #2ca02c;
+    font-weight: bold;
+    font-size: 30px;
+}
+.price-old{
+    color: #d62728;
+    font-weight: bold;
+    font-size: 22px;
+    text-decoration: line-through;
+}
+.info{
+    padding: 40px 0;
+}
+.info p{
+    padding-bottom: 10px;
+}
+
+
+/*****************FOOTER********************/
+
+footer{
+    padding: 20px 0;
+    background-image: linear-gradient(to top, #3c3c3c 0%, #222 100%);
+    text-align: center;
+    color: #fff;
+}
+footer li{
+    display: inline-block;
+    vertical-align: top;
+}
+footer li+li{
+    margin-left: 15px;
+}
+footer li a{
+    font: normal 24px/24px 'Raleway';
+    color: #fff;
+    text-transform: uppercase;
+
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+footer li a:hover{
+    color: #edfd40;
+}
+footer p{
+    padding-top: 15px;
+}
+.button-top{
+    position: fixed;
+    right: 20px;
+    bottom: 50px;
+    font-size: 50px;
+    line-height: 50px;
+    z-index: 999;
+    cursor: pointer;
+}
+/*****************MEDIA*********************/
+
+
+@media only screen and (max-width: 1170px){
+
+}

@@ -17,6 +17,7 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+        <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
         <link rel="stylesheet" href="{{asset('css/slick-theme.css')}}">
         <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
         <link rel="stylesheet" href="{{asset('css/style.css')}}">
@@ -26,11 +27,33 @@
         <header>
             <div class="container clearfix">
                 <a href="/" class="logo left"><img src="{{asset('images/logo.png')}}" alt=""></a>
-                <ul class="right">
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/about">О нас</a></li>
-                    <li><a href="/contact">Связаться с нами</a></li>
-                </ul>
+                <div class="right head-block">
+                    <span class="close"><i class="fa fa-times" aria-hidden="true"></i></span>
+                    <div class="head-block-inner">
+                        <ul>
+                            <li><a href="/">Главная</a></li>
+                            <li><a href="/about">О нас</a></li>
+                            <li><a href="/contact">Связаться с нами</a></li>
+                        </ul>
+                        <h3>Выберите супермаркет</h3>
+                        <div class="market-block">
+                            <a href="#"><img src="{{asset('images/atb.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/brusnichka.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/digma.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/fozzy.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/karavan.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/klass.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/metro.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/posad.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/rost.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/silpo.png')}}" alt=""></a>
+                            <a href="#"><img src="{{asset('images/vostorg.png')}}" alt=""></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="toggle-block right">
+                    <a href="#" class="toggle-mnu hidden-lg"><span></span></a>
+                </div>
                 <div class="search">
                     <div class="button-search">Поиск товаров</div>
                     <form action="" class="search-block">
@@ -62,9 +85,7 @@
                         </div>
                     </form>
                 </div>
-                <div class="toggle-block">
-                    <a href="#" class="toggle-mnu hidden-lg"><span></span></a>
-                </div>
+
             </div>
         </header>
 @show
@@ -107,14 +128,16 @@
                                         </p>
                                     </div>
                                     <div class="product-img">
-                                        <a href="#">
-                                            <img src="{{asset('images/product.jpg')}}" alt="">
-                                        </a>
+                                        <span class="inline-popups">
+                                            <a href="#popup" data-effect="mfp-zoom-out" >
+                                                <img src="{{asset('images/product.jpg')}}" alt="">
+                                            </a>
+                                        </span>
                                     </div>
                                     <div class="product-info">
                                         <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
                                         <div class="price-new">39<span>90</span></div>
-                                        <div class="price-old">69<span>90</span></div>
+                                        <div class="price-old">169<span>90</span></div>
                                     </div>
                                 </div>
                                 <div class="product-block">
@@ -126,14 +149,16 @@
                                         </p>
                                     </div>
                                     <div class="product-img">
-                                        <a href="#">
-                                            <img src="{{asset('images/product.jpg')}}" alt="">
-                                        </a>
+                                        <span class="inline-popups">
+                                            <a href="#popup" data-effect="mfp-zoom-out" >
+                                                <img src="{{asset('images/product.jpg')}}" alt="">
+                                            </a>
+                                        </span>
                                     </div>
                                     <div class="product-info">
                                         <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
                                         <div class="price-new">39<span>90</span></div>
-                                        <div class="price-old">69<span>90</span></div>
+                                        <div class="price-old">269<span>90</span></div>
                                     </div>
                                 </div>
                                 <div class="product-block">
@@ -145,14 +170,16 @@
                                         </p>
                                     </div>
                                     <div class="product-img">
-                                        <a href="#">
-                                            <img src="{{asset('images/product.jpg')}}" alt="">
-                                        </a>
+                                       <span class="inline-popups">
+                                            <a href="#popup" data-effect="mfp-zoom-out" >
+                                                <img src="{{asset('images/product.jpg')}}" alt="">
+                                            </a>
+                                        </span>
                                     </div>
                                     <div class="product-info">
                                         <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
                                         <div class="price-new">39<span>90</span></div>
-                                        <div class="price-old">69<span>90</span></div>
+                                        <div class="price-old">369<span>90</span></div>
                                     </div>
                                 </div>
                                 <div class="product-block">
@@ -164,14 +191,16 @@
                                         </p>
                                     </div>
                                     <div class="product-img">
-                                        <a href="#">
-                                            <img src="{{asset('images/product.jpg')}}" alt="">
-                                        </a>
+                                        <span class="inline-popups">
+                                            <a href="#popup" data-effect="mfp-zoom-out" >
+                                                <img src="{{asset('images/product.jpg')}}" alt="">
+                                            </a>
+                                        </span>
                                     </div>
                                     <div class="product-info">
                                         <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
                                         <div class="price-new">39<span>90</span></div>
-                                        <div class="price-old">69<span>90</span></div>
+                                        <div class="price-old">469<span>90</span></div>
                                     </div>
                                 </div>
                                 <div class="product-block">
@@ -183,14 +212,16 @@
                                         </p>
                                     </div>
                                     <div class="product-img">
-                                        <a href="#">
-                                            <img src="{{asset('images/product.jpg')}}" alt="">
-                                        </a>
+                                       <span class="inline-popups">
+                                            <a href="#popup" data-effect="mfp-zoom-out" >
+                                                <img src="{{asset('images/product.jpg')}}" alt="">
+                                            </a>
+                                        </span>
                                     </div>
                                     <div class="product-info">
                                         <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
                                         <div class="price-new">39<span>90</span></div>
-                                        <div class="price-old">69<span>90</span></div>
+                                        <div class="price-old">569<span>90</span></div>
                                     </div>
                                 </div>
                                 <div class="product-block">
@@ -202,14 +233,16 @@
                                         </p>
                                     </div>
                                     <div class="product-img">
-                                        <a href="#">
-                                            <img src="{{asset('images/product.jpg')}}" alt="">
-                                        </a>
+                                        <span class="inline-popups">
+                                            <a href="#popup" data-effect="mfp-zoom-out" >
+                                                <img src="{{asset('images/product.jpg')}}" alt="">
+                                            </a>
+                                        </span>
                                     </div>
                                     <div class="product-info">
                                         <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
                                         <div class="price-new">39<span>90</span></div>
-                                        <div class="price-old">69<span>90</span></div>
+                                        <div class="price-old">669<span>90</span></div>
                                     </div>
                                 </div>
                             </div>
@@ -256,11 +289,29 @@
             </div>
         </footer>
         <div class="button-top"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></div>
+        <div id="popup" class="white-popup mfp-with-anim mfp-hide">
+            <div class="tabs">
+                <span class="tab">Обзор</span>
+                <span class="tab">Где купить</span>
+            </div>
+            <div class="tab_content">
+                <div class="tab_item">
+                    <h4></h4>
+                    <img src="" alt="">
+                    <div class="price-new"></div> <div class="price-old"></div>
+                </div>
+                <div class="tab_item">
+                    <div id="popup-map" class="popup-map"></div>
+                </div>
+            </div>
+        </div>
     </body>
 
     <script type="text/javascript" src="{{asset('js/jquery-1.12.3.min.js')}}"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB40MWdQXFFBPBMeDLfC84waVV7kvf3-qc&callback=initMap"></script>
     <script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.mask.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
     <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 
 </html>

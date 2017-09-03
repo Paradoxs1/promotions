@@ -15,12 +15,14 @@
 Route::get('/', function(){
     return view('index');
 });
+Route::get('/about', 'AboutController@about');
+Route::get('/contact', 'ContactController@contact');
 
 //Route::get('/', [ 'as'=> 'home', function () {
 //    return view('welcome');
 //}]);
 
-Route::get('page', 'IndexController@index');
+//Route::get('page', 'IndexController@index');
 
 //Route::get('paged/{cat}/{id?}', function($var){
 //    echo '<pre>';

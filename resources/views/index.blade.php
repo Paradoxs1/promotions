@@ -9,7 +9,7 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
 
-        <title>Promotions</title>
+        <title>{{ $title }}</title>
 
         <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/><link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
         <!-- Fonts -->
@@ -26,14 +26,14 @@
     <body>
         <header>
             <div class="container clearfix">
-                <a href="/" class="logo left"><img src="{{asset('images/logo.png')}}" alt=""></a>
+                <a href="{{ route('home') }}" class="logo left"><img src="{{asset('images/logo.png')}}" alt=""></a>
                 <div class="right head-block">
                     <span class="close"><i class="fa fa-times" aria-hidden="true"></i></span>
                     <div class="head-block-inner">
                         <ul>
-                            <li><a href="/">Главная</a></li>
-                            <li><a href="/about">О нас</a></li>
-                            <li><a href="/contact">Связаться с нами</a></li>
+                            <li><a href="{{ route('home') }}">Главная</a></li>
+                            <li><a href="{{ route('about') }}">О нас</a></li>
+                            <li><a href="{{ route('contact') }}">Связаться с нами</a></li>
                         </ul>
                         <h3>Выберите супермаркет</h3>
                         <div class="market-block">
@@ -281,9 +281,9 @@
         <footer>
             <div class="container">
                 <ul>
-                    <li><a href="/">Главная</a></li>
-                    <li><a href="/about">О нас</a></li>
-                    <li><a href="/contact">Связаться с нами</a></li>
+                    <li><a href="{{ route('home') }}">Главная</a></li>
+                    <li><a href="{{ route('about') }}">О нас</a></li>
+                    <li><a href="{{ route('contact') }}">Связаться с нами</a></li>
                 </ul>
                 <p>©2017 promotions - акции и скидки супермаркетов Харькова. Все права защищены.</p>
             </div>

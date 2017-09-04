@@ -3,7 +3,7 @@
 @section('head')
     @parent
 @endsection
-{{ print_r(Session::all()) }}
+{{--{{ print_r(Session::all()) }}--}}
 @section('main')
     <main>
         <section class="contact">

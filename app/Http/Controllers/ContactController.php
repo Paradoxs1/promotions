@@ -15,8 +15,8 @@ class ContactController extends Controller
 //            $request->all();
             $request->flash();
 //            $request->flashExcept('_token');
-            return view('contact')->withTitle('promotions');
+            return view('contact')->withTitle('promotions | contact');
         }
-        return view('index')->with($requestFromForm);
+        return view('index')->withTitle('not view');
     }
 }

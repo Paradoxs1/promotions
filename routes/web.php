@@ -12,11 +12,17 @@
 */
 
 
-Route::get('/', function(){
-    return view('index');
-});
-Route::get('/about', 'AboutController@about');
-Route::get('/contact', 'ContactController@contact');
+Route::get('/', 'IndexController@show')->name('home');
+Route::get('/about', 'AboutController@show')->name('about');
+
+Route::match(['get', 'post'], '/contact', 'ContactController@show')->name('contact');
+
+
+//Route::get('/', function(){
+//    return view('index');
+//});
+//Route::get('/about', 'AboutController@about');
+//Route::get('/contact', 'ContactController@contact');
 
 //Route::get('/', [ 'as'=> 'home', function () {
 //    return view('welcome');

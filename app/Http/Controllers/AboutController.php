@@ -19,7 +19,7 @@ class AboutController extends Controller
             $page = DB::select("select * from pages where name_page = ?", ['about']);
 
             $data = [];
-            foreach($page as $value){
+            foreach ($page as $value) {
                 $data['name_page'] = $value->name_page;
                 $data['title'] = $value->title;
                 $data['h1'] = $value->h1;
@@ -30,7 +30,7 @@ class AboutController extends Controller
                 $data['content5'] = $value->content5;
             }
 
-            dump($data);
+//            dump($data);
 
             return view('about')->with($data);
         }

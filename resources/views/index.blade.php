@@ -10,8 +10,6 @@
         <meta name="keywords" content="">
 @if( isset($title))
         <title>{{ $title }}</title>
-@elseif( isset($data['title']))
-            <title>{{ $data['title'] }}</title>
 @else
             <title>Title</title>
 @endif

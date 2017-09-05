@@ -9,7 +9,7 @@
         <section class="about">
             <div class="container">
                 <div class="about-inner">
-                    <h1>О сайте</h1>
+                    <h1>О нас</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ut augue eget ante pretium fringilla.
                         Morbi ultrices scelerisque sem. Integer fermentum, enim et rutrum mollis, massa purus accumsan elit,
                         id pellentesque ante lectus eget augue. Suspendisse vel est quis metus eleifend lacinia a in sem.

@@ -8,8 +8,14 @@
         <meta name="format-detection" content="telephone=no">
         <meta name="description" content="">
         <meta name="keywords" content="">
-
+@if( isset($title))
         <title>{{ $title }}</title>
+@elseif( isset($data['title']))
+            <title>{{ $data['title'] }}</title>
+@else
+            <title>Title</title>
+@endif
+
 
         <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/><link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
         <!-- Fonts -->

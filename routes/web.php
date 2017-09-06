@@ -14,6 +14,7 @@
 
 Route::get('/', 'IndexController@show')->name('home');
 Route::get('/about', 'AboutController@show')->name('about');
+Route::get('/product', 'ProductController@show')->name('product');
 
 Route::match(['get', 'post'], '/contact', 'ContactController@show')->name('contact');
 

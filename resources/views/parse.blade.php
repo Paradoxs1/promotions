@@ -14,6 +14,7 @@
                                 class="tab"><i class="fa fa-map-marker" aria-hidden="true"></i> Карта магазинов</span>
                     </div>
                 </div>
+                {{ $title }}
 
             </div>
         </section>

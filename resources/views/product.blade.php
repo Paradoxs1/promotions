@@ -20,7 +20,7 @@
                             @foreach($data as $product)
                                 <div class="product-block">
                                     <div class="product-top clearfix">
-                                        <img src="{{asset('images/klass-small.png')}}" class="left" alt="">
+                                        <img src="{{ asset('images/atb.png') }}" class="left" alt="">
                                         <p>
                                             <span class="sale">7 дней, купи не пожалеешь</span><br>
                                             <span class="date">{{ $product->description }}</span>
@@ -29,7 +29,7 @@
                                     <div class="product-img">
                                         <span class="inline-popups">
                                             <a href="#popup" data-effect="mfp-zoom-out">
-                                                <img src="{{asset('images/product.jpg')}}" alt="">
+                                                <img src="{{ $product->img }}" alt="">
                                             </a>
                                         </span>
                                     </div>

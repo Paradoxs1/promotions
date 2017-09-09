@@ -19,6 +19,7 @@ Route::get('/product', 'ProductController@show')->name('product');
 Route::get('/parse', 'ParseController@show')->name('parse');
 
 Route::match(['get', 'post'], '/contact', 'ContactController@show')->name('contact');
+Route::match(['get', 'post'], '/parse/parseAtb', 'ParseController@parseAtb')->name('parseAtb');
 
 
 //Route::get('/', function(){

@@ -24,7 +24,7 @@ class ProductController extends Controller
 //            $data = $this->getFirstProduct();
 //            $data = DB::table('products')->value('id');
 
-            dump($data);
+//            dump($data);
 
             return view('product')->withData($data);
 

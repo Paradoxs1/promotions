@@ -8,14 +8,11 @@
     <main>
         <section class="main">
             <div class="container">
-                <h1>Акции и скидки супермаркетов Харькова</h1>
-                <div class="main-top clearfix">
-                    <div class="right tabs"><span class="tab"><i class="fa fa-list" aria-hidden="true"></i> Список акций</span><span
-                                class="tab"><i class="fa fa-map-marker" aria-hidden="true"></i> Карта магазинов</span>
-                    </div>
-                </div>
-                {{ $title }}
-
+                <form action="{{ route('parseAtb') }}" method="post" class="contact-form">
+                    {{ csrf_field() }}
+                    <h1>Парсить атб</h1>
+                    <input type="submit" value="Парсить">
+                </form>
             </div>
         </section>
     </main>

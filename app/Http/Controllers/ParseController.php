@@ -115,7 +115,7 @@ class ParseController extends Controller
                     $price_dollar_sale = $div->find('.price_2014_new span.hrn')->text();
                     $price_cent_sale = $div->find('.price_2014_new span.kop')->text();
                     $price_sale = $price_dollar_sale + $price_cent_sale / 100;
-                    $href_img = $div->find('img')->attr('src');
+                    $href_img = $div->find('a')->attr('href');
                     $img = 'http://silpo.ua/' . $href_img;
 
                     if (!empty($price_sale) && !empty($price)) {

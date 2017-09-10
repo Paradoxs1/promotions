@@ -20,30 +20,6 @@ Route::get('/parse', 'ParseController@show')->name('parse');
 
 Route::match(['get', 'post'], '/contact', 'ContactController@show')->name('contact');
 Route::match(['get', 'post'], '/parse/parseAtb', 'ParseController@parseAtb')->name('parseAtb');
+Route::match(['get', 'post'], '/parse/parseSilpo', 'ParseController@parseSilpo')->name('parseSilpo');
 
 
-//Route::get('/', function(){
-//    return view('index');
-//});
-//Route::get('/about', 'AboutController@about');
-//Route::get('/contact', 'ContactController@contact');
-
-//Route::get('/', [ 'as'=> 'home', function () {
-//    return view('welcome');
-//}]);
-
-//Route::get('page', 'IndexController@index');
-
-//Route::get('paged/{cat}/{id?}', function($var){
-//    echo '<pre>';
-//    echo $var;
-//    //echo Config::get('app.locale');
-//    //print_r($_ENV);
-//})->where(['id'=>'[0-9]+', 'cat'=>'[a-zA-z]+']);
-//
-//
-//Route::group(['prefix' => 'admin'], function () {
-//    Route::get('user', function ()    {
-//        echo 'user';
-//    });
-//});

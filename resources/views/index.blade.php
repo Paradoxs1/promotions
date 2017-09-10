@@ -141,9 +141,9 @@
                                 @foreach($data as $product)
                                     <div class="product-block">
                                         <div class="product-top clearfix">
-                                            <img src="{{ asset('images/atb.png') }}" class="left" alt="">
+                                            <img src="{{ $product->shop }}" class="left" alt="">
                                             <p>
-                                                <span class="sale">7 дней, купи не пожалеешь</span><br>
+                                                <span class="sale">{{ $product->name_action }}</span><br>
                                                 <span class="date">{{ $product->description }}</span>
                                             </p>
                                         </div>

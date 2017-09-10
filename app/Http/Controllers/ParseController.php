@@ -25,12 +25,10 @@ class ParseController extends Controller
         $html = file_get_contents($url);
         $doc = PhpQuery::newDocument($html);
 
-        $shop = '\images\atb.png';
+        $shop = '\images\atb-small.png';
         $name_action = $doc->find("title")->text();
 
         Product::where('id', '>', 0)->where('name_action', '=', $name_action)->delete(); //тут нужно подумать как не записывать уже записанное
-
-
 
         foreach ($doc->find("ul#cat0 > li") as $li) {
             $li = pq($li);

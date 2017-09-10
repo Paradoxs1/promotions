@@ -144,7 +144,7 @@
                                             <img src="{{ $product->shop }}" class="left" alt="">
                                             <p>
                                                 <span class="sale">{{ $product->name_action }}</span><br>
-                                                <span class="date">{{ $product->description }}</span>
+                                                {{--<span class="date">{{ $product->description }}</span>--}}
                                             </p>
                                         </div>
                                         <div class="product-img">
@@ -155,7 +155,7 @@
                                         </span>
                                         </div>
                                         <div class="product-info">
-                                            <div class="product-title">{{ $product->name }}</div>
+                                            <div class="product-title">{{ $product->name }} {{ $product->description }}</div>
                                             <div class="price-new">{{ $product->price_sale }}</div>
                                             <div class="price-old">{{ $product->price }}</div>
                                         </div>

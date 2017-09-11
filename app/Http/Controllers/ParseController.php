@@ -42,6 +42,9 @@ class ParseController extends Controller
             $li->find('.price_box div.promo_price span')->remove();
             $price_dollar = $li->find('.price_box div.promo_price')->html();
             $href_img = $li->find('.promo_image_wrap img')->attr('src');
+
+            $href_img = str_replace('_295_235_f', '', $href_img);
+
             $img = 'http://www.atbmarket.com/' . $href_img;
             $name = trim($li->find('.promo_info span.promo_info_text')->text());
 

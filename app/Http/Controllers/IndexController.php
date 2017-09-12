@@ -4,12 +4,19 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use DB;
+
+use App\Product;
+
 class IndexController extends Controller
 {
     public function show()
     {
         if (view()->exists('index')) {
-            return view('index')->withTitle('promotions | home');
+
+            $data = Product::all();
+
+            return view('index')->withData($data)->withTitle('promotions | home');
         }
         return view('welcome')->withTitle('View not found');
     }

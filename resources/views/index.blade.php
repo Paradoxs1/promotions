@@ -39,6 +39,7 @@
             <div class="head-block-inner">
                 <ul>
                     <li><a href="{{ route('home') }}">Главная</a></li>
+                    <li><a href="{{ route('parse') }}">Парсить</a></li>
                     <li><a href="{{ route('about') }}">О нас</a></li>
                     <li><a href="{{ route('contact') }}">Связаться с нами</a></li>
                 </ul>
@@ -136,132 +137,31 @@
                 <div class="main-content">
                     <div class="tab_item">
                         <div class="product-container">
-                            <div class="product-block">
-                                <div class="product-top clearfix">
-                                    <img src="{{asset('images/klass-small.png')}}" class="left" alt="">
-                                    <p>
-                                        <span class="sale">7 дней, купи не пожалеешь</span><br>
-                                        <span class="date">29 июля - 5 сентября 2017 года</span>
-                                    </p>
-                                </div>
-                                <div class="product-img">
+                            @if(!empty($data))
+                                @foreach($data as $product)
+                                    <div class="product-block">
+                                        <div class="product-top clearfix">
+                                            <img src="{{ $product->shop }}" class="left" alt="">
+                                            <p>
+                                                <span class="sale">{{ $product->name_action }}</span><br>
+                                                {{--<span class="date">{{ $product->description }}</span>--}}
+                                            </p>
+                                        </div>
+                                        <div class="product-img">
                                         <span class="inline-popups">
                                             <a href="#popup" data-effect="mfp-zoom-out">
-                                                <img src="{{asset('images/product.jpg')}}" alt="">
+                                                <img src="{{ $product->img }}" alt="">
                                             </a>
                                         </span>
-                                </div>
-                                <div class="product-info">
-                                    <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
-                                    <div class="price-new">39<span>90</span></div>
-                                    <div class="price-old">169<span>90</span></div>
-                                </div>
-                            </div>
-                            <div class="product-block">
-                                <div class="product-top clearfix">
-                                    <img src="{{asset('images/klass-small.png')}}" class="left" alt="">
-                                    <p>
-                                        <span class="sale">7 дней, купи не пожалеешь</span><br>
-                                        <span class="date">29 июля - 5 сентября 2017 года</span>
-                                    </p>
-                                </div>
-                                <div class="product-img">
-                                        <span class="inline-popups">
-                                            <a href="#popup" data-effect="mfp-zoom-out">
-                                                <img src="{{asset('images/product.jpg')}}" alt="">
-                                            </a>
-                                        </span>
-                                </div>
-                                <div class="product-info">
-                                    <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
-                                    <div class="price-new">39<span>90</span></div>
-                                    <div class="price-old">269<span>90</span></div>
-                                </div>
-                            </div>
-                            <div class="product-block">
-                                <div class="product-top clearfix">
-                                    <img src="{{asset('images/klass-small.png')}}" class="left" alt="">
-                                    <p>
-                                        <span class="sale">7 дней, купи не пожалеешь</span><br>
-                                        <span class="date">29 июля - 5 сентября 2017 года</span>
-                                    </p>
-                                </div>
-                                <div class="product-img">
-                                       <span class="inline-popups">
-                                            <a href="#popup" data-effect="mfp-zoom-out">
-                                                <img src="{{asset('images/product.jpg')}}" alt="">
-                                            </a>
-                                        </span>
-                                </div>
-                                <div class="product-info">
-                                    <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
-                                    <div class="price-new">39<span>90</span></div>
-                                    <div class="price-old">369<span>90</span></div>
-                                </div>
-                            </div>
-                            <div class="product-block">
-                                <div class="product-top clearfix">
-                                    <img src="{{asset('images/klass-small.png')}}" class="left" alt="">
-                                    <p>
-                                        <span class="sale">7 дней, купи не пожалеешь</span><br>
-                                        <span class="date">29 июля - 5 сентября 2017 года</span>
-                                    </p>
-                                </div>
-                                <div class="product-img">
-                                        <span class="inline-popups">
-                                            <a href="#popup" data-effect="mfp-zoom-out">
-                                                <img src="{{asset('images/product.jpg')}}" alt="">
-                                            </a>
-                                        </span>
-                                </div>
-                                <div class="product-info">
-                                    <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
-                                    <div class="price-new">39<span>90</span></div>
-                                    <div class="price-old">469<span>90</span></div>
-                                </div>
-                            </div>
-                            <div class="product-block">
-                                <div class="product-top clearfix">
-                                    <img src="{{asset('images/klass-small.png')}}" class="left" alt="">
-                                    <p>
-                                        <span class="sale">7 дней, купи не пожалеешь</span><br>
-                                        <span class="date">29 июля - 5 сентября 2017 года</span>
-                                    </p>
-                                </div>
-                                <div class="product-img">
-                                       <span class="inline-popups">
-                                            <a href="#popup" data-effect="mfp-zoom-out">
-                                                <img src="{{asset('images/product.jpg')}}" alt="">
-                                            </a>
-                                        </span>
-                                </div>
-                                <div class="product-info">
-                                    <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
-                                    <div class="price-new">39<span>90</span></div>
-                                    <div class="price-old">569<span>90</span></div>
-                                </div>
-                            </div>
-                            <div class="product-block">
-                                <div class="product-top clearfix">
-                                    <img src="{{asset('images/klass-small.png')}}" class="left" alt="">
-                                    <p>
-                                        <span class="sale">7 дней, купи не пожалеешь</span><br>
-                                        <span class="date">29 июля - 5 сентября 2017 года</span>
-                                    </p>
-                                </div>
-                                <div class="product-img">
-                                        <span class="inline-popups">
-                                            <a href="#popup" data-effect="mfp-zoom-out">
-                                                <img src="{{asset('images/product.jpg')}}" alt="">
-                                            </a>
-                                        </span>
-                                </div>
-                                <div class="product-info">
-                                    <div class="product-title">Колбаса «Астория» п/к Безлюдовский МК, кг</div>
-                                    <div class="price-new">39<span>90</span></div>
-                                    <div class="price-old">669<span>90</span></div>
-                                </div>
-                            </div>
+                                        </div>
+                                        <div class="product-info">
+                                            <div class="product-title">{{ $product->name }} {{ $product->description }}</div>
+                                            <div class="price-new">{{ $product->price_sale }}</div>
+                                            <div class="price-old">{{ $product->price }}</div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            @endif
                         </div>
                     </div>
                     <div class="tab_item">

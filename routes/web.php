@@ -12,7 +12,7 @@
 */
 
 
-Route::get('/', 'IndexController@show')->name('home');
+Route::get('/', 'IndexController@show')->name('promotions');
 Route::get('/about', 'AboutController@show')->name('about');
 Route::get('/product', 'ProductController@show')->name('product');
 
@@ -23,3 +23,7 @@ Route::match(['get', 'post'], '/parse/parseAtb', 'ParseController@parseAtb')->na
 Route::match(['get', 'post'], '/parse/parseSilpo', 'ParseController@parseSilpo')->name('parseSilpo');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

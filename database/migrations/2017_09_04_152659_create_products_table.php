@@ -15,15 +15,17 @@ class CreateProductsTable extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('category_id');
-            $table->integer('tag_id');
-            $table->string('name');
-            $table->string('img');
+            $table->integer('category_id')->nullable()->default(NULL);
+            $table->integer('tag_id')->nullable()->default(NULL);
+            $table->string('name')->nullable()->default(NULL);
+            $table->string('shop')->nullable()->default(NULL);
+            $table->string('name_action')->nullable()->default(NULL);
+            $table->string('img')->nullable()->default(NULL);
             $table->unsignedTinyInteger('status')->default('1');
-            $table->text('description');
-            $table->float('price');
-            $table->float('price_sale');
-            $table->integer('sale');
+            $table->text('description')->nullable()->default(NULL);
+            $table->float('price')->nullable()->default(NULL);
+            $table->float('price_sale')->nullable()->default(NULL);
+            $table->integer('sale')->nullable()->default(NULL);
             $table->timestamps();
         });
     }

@@ -27,3 +27,7 @@ Route::match(['get', 'post'], '/parse/parseSilpo', 'ParseController@parseSilpo')
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

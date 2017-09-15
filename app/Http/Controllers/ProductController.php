@@ -16,13 +16,7 @@ class ProductController extends Controller
     {
         if (view()->exists('product')) {
 
-//            $data = $this->getProducts();
-//            $product = $this->createProduct();
-//            $product = $this->updateProduct();
-
             $data = Product::all();
-//            $data = $this->getFirstProduct();
-//            $data = DB::table('products')->value('id');
 
 //            dump($data);
 

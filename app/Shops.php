@@ -11,7 +11,8 @@ use DB;
 class Shops extends Model
 {
 
-    public static function AtbEkonomy(){
+    public static function AtbEkonomy()
+    {
         $parser = Parser::parser('http://www.atbmarket.com/ru/hot/akcii/economy/');
 
         $shop = '\images\atb-small.png';
@@ -48,7 +49,7 @@ class Shops extends Model
             $product->shop = $shop;
             $product->img = $img;
             $product->description = $desc;
-            if(empty($price)){
+            if (empty($price)) {
                 $price = null;
                 $sale = 0;
             }
@@ -57,16 +58,78 @@ class Shops extends Model
             $product->sale = $sale;
             $product->tag_id = 1;
 
-            $check = DB::select("select img from products where img = ?",["$img"]);
-            if(empty($check)){
+            $check = DB::select("select img from products where img = ?", ["$img"]);
+            if (empty($check)) {
                 $product->save();
             }
         }
 
-        return redirect()->route('home');
+        return true;
     }
 
-    public static function Silpo(){
+    public static function AtbSevenDay()
+    {
+        $parser = Parser::parser('http://www.atbmarket.com/ru/hot/akcii/7day/');
+
+        $shop = '\images\atb-small.png';
+        $name_action = $parser->find("title")->text();
+
+        foreach ($parser->find("div.tab-content > ul") as $ul) {
+            $ul = pq($ul);
+
+            foreach ($ul->find("li") as $li) {
+                $li = pq($li);
+
+                $desc = $li->find('.promo_info span.promo_info_text span')->text();
+                $li->find('.promo_info span.promo_info_text span')->remove();
+                $name = trim($li->find('div.promo_info span.promo_info_text')->text());
+
+                $href_img = $li->find('.promo_image_wrap img')->attr('src');
+                $href_img = str_replace('_295_235_f', '', $href_img);
+                $img = 'http://www.atbmarket.com/' . $href_img;
+
+                $price = $li->find('.price_box span.promo_old_price')->text();
+                $li->find('.price_box div.promo_price span.currency')->remove();
+                $price_cent = $li->find('.price_box div.promo_price span')->html();
+                $li->find('.promo_info span.promo_info_text span')->remove();
+                $li->find('.price_box div.promo_price span')->remove();
+                $price_dollar = $li->find('.price_box div.promo_price')->html();
+                $price_sale = $price_dollar + $price_cent / 100;
+
+                if (!empty($price_sale) && !empty($price)) {
+                    $sale = ($price - $price_sale) / $price * 100;
+                    $sale = ceil($sale);
+                }
+
+                $product = new Product();
+
+                $product->name = $name;
+                $product->name_action = $name_action;
+                $product->shop = $shop;
+                $product->img = $img;
+                $product->description = $desc;
+                if (empty($price)) {
+                    $price = null;
+                    $sale = 0;
+                }
+                $product->price = $price;
+                $product->price_sale = $price_sale;
+                $product->sale = $sale;
+                $product->tag_id = 1;
+
+                $check = DB::select("select img from products where img = ?", ["$img"]);
+                if (empty($check)) {
+                    $product->save();
+                }
+            }
+        }
+
+
+        return true;
+    }
+
+    public static function Silpo()
+    {
 
         $url = 'http://silpo.ua/ru/actions/priceoftheweek/';
         $start = 0;
@@ -77,8 +140,9 @@ class Shops extends Model
         return redirect()->route('home');
     }
 
-    public static function SilpoParser($url, $start, $end){
-        if ($start < $end){
+    public static function SilpoParser($url, $start, $end)
+    {
+        if ($start < $end) {
 
             $parser = Parser::parser($url);
 
@@ -123,8 +187,8 @@ class Shops extends Model
                 $product->sale = $sale;
                 $product->tag_id = 1;
 
-                $check = DB::select("select img from products where img = ?",["$img"]);
-                if(empty($check)){
+                $check = DB::select("select img from products where img = ?", ["$img"]);
+                if (empty($check)) {
                     $product->save();
                 }
             }

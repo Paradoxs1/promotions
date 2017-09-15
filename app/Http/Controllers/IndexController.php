@@ -8,6 +8,7 @@ use DB;
 use App\Shops;
 
 use App\Product;
+use App\Category;
 
 class IndexController extends Controller
 {

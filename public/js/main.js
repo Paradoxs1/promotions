@@ -158,6 +158,9 @@ $(document).ready(function(){
         $(this).parents('body').find('#popup .price-new').html(priceNew);
         $(this).parents('body').find('#popup .price-old').html(priceOld);
     });
+
+    $("select").select2();
+
 });
 
 $('main .tab:last').click(function(){

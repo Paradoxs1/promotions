@@ -8,10 +8,13 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Promotions</title>
 
     <!-- Styles -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,900" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 </head>
 <body>
     <div id="app">
@@ -29,7 +32,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        Promotions
                     </a>
                 </div>
 
@@ -73,8 +76,17 @@
 
         @yield('content')
     </div>
+    <div class="button-top"><i class="fa fa-arrow-circle-up" aria-hidden="true"></i></div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery-1.12.3.min.js')}}"></script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB40MWdQXFFBPBMeDLfC84waVV7kvf3-qc&callback=initMap"></script>
+    <script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.mask.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 </body>
 </html>

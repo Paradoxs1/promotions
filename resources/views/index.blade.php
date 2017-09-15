@@ -1,5 +1,5 @@
 @section('head')
-        <!doctype html>
+<!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -239,6 +239,7 @@
 <script type="text/javascript" src="{{asset('js/slick.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.mask.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 
 </html>

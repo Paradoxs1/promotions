@@ -63,7 +63,7 @@ class Shops extends Model
             }
         }
 
-        return redirect()->route('home');
+        return redirect()->route('promotions');
     }
 
     public static function Silpo(){
@@ -74,7 +74,7 @@ class Shops extends Model
 
         self::SilpoParser($url, $start, $end);
 
-        return redirect()->route('home');
+        return redirect()->route('promotions');
     }
 
     public static function SilpoParser($url, $start, $end){

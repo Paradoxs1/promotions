@@ -33,7 +33,7 @@
 <body>
 <header>
     <div class="container clearfix">
-        <a href="{{ route('home') }}" class="logo left"><img src="{{asset('images/logo.png')}}" alt=""></a>
+        <a href="{{ route('promotions') }}" class="logo left"><img src="{{asset('images/logo.png')}}" alt=""></a>
         <div class="right head-block">
             <span class="close"><i class="fa fa-times" aria-hidden="true"></i></span>
             <div class="head-block-inner">

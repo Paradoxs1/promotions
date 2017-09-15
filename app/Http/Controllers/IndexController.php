@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use DB;
-use App\Shops;
-
 use App\Product;
 use App\Category;
 

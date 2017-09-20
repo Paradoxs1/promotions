@@ -34,4 +34,15 @@ class ParseController extends Controller
         return Shops::Silpo();
 
     }
+
+    public function parseKlass(){
+
+        $klassTen = Shops::KlassTen();
+        $klassTheme = Shops::KlassTheme();
+
+        if($klassTheme && $klassTen){
+            return redirect()->route('promotions');
+        }
+
+    }
 }

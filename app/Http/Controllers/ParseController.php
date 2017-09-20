@@ -17,7 +17,16 @@ class ParseController extends Controller
 
     public function parseAtb()
     {
-        return Shops::AtbEkonomy();
+        $atbEkonomy = Shops::AtbEkonomy();
+        $atbSevenDay = Shops::AtbSevenDay();
+
+        if($atbEkonomy && $atbSevenDay){
+
+            return redirect()->route('promotions');
+        }
+
+        return redirect()->route('home');
+
     }
 
     public function parseSilpo()

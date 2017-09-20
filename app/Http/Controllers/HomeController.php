@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use App\Product;
+use App\Catalog;
 
 class HomeController extends Controller
 {
@@ -26,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         $data = Product::where('category_id', null)->take(10)->get();
-        return view('home')->withData($data);
+        $catalog = Catalog::all();
+        return view('home')->withData($data)->withCatalog($catalog);
     }
 }

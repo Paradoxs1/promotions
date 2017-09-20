@@ -15,7 +15,6 @@
 Route::get('/', 'IndexController@show')->name('promotions');
 Route::get('/about', 'AboutController@show')->name('about');
 Route::get('/product', 'ProductController@show')->name('product');
-
 Route::get('/parse', 'ParseController@show')->name('parse');
 
 Route::match(['get', 'post'], '/contact', 'ContactController@show')->name('contact');
@@ -27,3 +26,4 @@ Route::match(['get', 'post'], '/parse/parseSilpo', 'ParseController@parseSilpo')
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('catalog', 'CatalogController@catalog')->name('catalog');

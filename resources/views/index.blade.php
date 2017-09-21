@@ -38,7 +38,7 @@
             <span class="close"><i class="fa fa-times" aria-hidden="true"></i></span>
             <div class="head-block-inner">
                 <ul>
-                    <li><a href="{{ route('home') }}">Главная</a></li>
+                    <li><a href="{{ route('promotions') }}">Главная</a></li>
                     <li><a href="{{ route('parse') }}">Парсить</a></li>
                     <li><a href="{{ route('about') }}">О нас</a></li>
                     <li><a href="{{ route('contact') }}">Связаться с нами</a></li>

@@ -11,14 +11,15 @@ use DB;
 class Shops extends Model
 {
 
-    public static function AtbEkonomy()
+    public function AtbEkonomy()
     {
-        $parser = Parser::parser('http://www.atbmarket.com/ru/hot/akcii/economy/');
+        $parser = new Parser;
+        $atb = $parser->parser('http://www.atbmarket.com/ru/hot/akcii/economy/');
 
         $shop = '\images\atb-small.png';
-        $name_action = $parser->find("title")->text();
+        $name_action = $atb->find("title")->text();
 
-        foreach ($parser->find("ul#cat0 > li") as $li) {
+        foreach ($atb->find("ul#cat0 > li") as $li) {
             $li = pq($li);
 
             $desc = $li->find('.promo_info span.promo_info_text span')->text();
@@ -68,14 +69,15 @@ class Shops extends Model
         return true;
     }
 
-    public static function AtbSevenDay()
+    public function AtbSevenDay()
     {
-        $parser = Parser::parser('http://www.atbmarket.com/ru/hot/akcii/7day/');
+        $parser = new Parser;
+        $atb = $parser->parser('http://www.atbmarket.com/ru/hot/akcii/7day/');
 
         $shop = '\images\atb-small.png';
-        $name_action = $parser->find("title")->text();
+        $name_action = $atb->find("title")->text();
 
-        foreach ($parser->find("div.tab-content > ul") as $ul) {
+        foreach ($atb->find("div.tab-content > ul") as $ul) {
             $ul = pq($ul);
 
             foreach ($ul->find("li") as $li) {
@@ -130,7 +132,7 @@ class Shops extends Model
 
     }
 
-    public static function Silpo()
+    public function Silpo()
     {
 
 //        $url = [
@@ -145,22 +147,23 @@ class Shops extends Model
         $end = 100;
 
         //foreach ($url as $u){
-            self::SilpoParser($url, $start, $end);
+            $this->SilpoParser($url, $start, $end);
        // }
 
         return redirect()->route('promotions');
     }
 
-    public static function SilpoParser($u, $start, $end)
+    public function SilpoParser($u, $start, $end)
     {
         if ($start < $end) {
 
-            $parser = Parser::parser($u);
+            $parser = new Parser;
+            $silpo = $parser->parser($u);
 
             $shop = '\images\silpo-small.png';
-            $name_action = $parser->find("div.ots div div div font:first")->text();
+            $name_action = $silpo->find("div.ots div div div font:first")->text();
 
-            foreach ($parser->find("div.ots > div.photo ") as $div) {
+            foreach ($silpo->find("div.ots > div.photo ") as $div) {
                 $div = pq($div);
 
                 $desc = $div->find('h3')->text();
@@ -210,19 +213,20 @@ class Shops extends Model
 
             if (!empty($next1)) {
                 $start++;
-                self::SilpoParser($url, $start, $end);
+                $this->SilpoParser($url, $start, $end);
             }
         }
     }
 
-    public static function KlassTen(){
+    public function KlassTen(){
 
-        $parser = Parser::parser('http://www.klass.com.ua/catalog.html?cat_id=16');
+        $parser = new Parser;
+        $klass = $parser->parser('http://www.klass.com.ua/catalog.html?cat_id=16');
 
         $shop = '\images\klass-small.png';
-        $name_action = $parser->find('#tttt strong')->text();
+        $name_action = $klass->find('#tttt strong')->text();
 
-        foreach ($parser->find("#goods td[valign='top']") as $li) {
+        foreach ($klass->find("#goods td[valign='top']") as $li) {
             $li = pq($li);
 
             $name = trim($li->find('.cmlt_1')->text());
@@ -269,12 +273,13 @@ class Shops extends Model
 
     public static function KlassTheme(){
 
-        $parser = Parser::parser('http://www.klass.com.ua/catalog.html?cat_id=43');
+        $parser = new Parser;
+        $klass = $parser->parser('http://www.klass.com.ua/catalog.html?cat_id=43');
 
         $shop = '\images\klass-small.png';
-        $name_action = $parser->find('#tttt strong')->text();
+        $name_action = $klass->find('#tttt strong')->text();
 
-        foreach ($parser->find(".tttt tbody img") as $li) {
+        foreach ($klass->find(".tttt tbody img") as $li) {
             $li = pq($li);
             $href_img = $li->attr('src');
 

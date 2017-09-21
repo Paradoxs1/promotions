@@ -15,61 +15,58 @@ class CategorySeeder extends Seeder
         DB::table('category')->insert(
             [
                 [
-                    'name'=>"grocery"
+                    'name'=>"бакалея"
                 ],
                 [
-                    'name'=>"bakery"
+                    'name'=>"хлебобулочные"
                 ],
                 [
-                    'name'=>"sweet_dessert"
+                    'name'=>"сладкое, дессерт"
                 ],
                 [
-                    'name'=>"ready_meals"
+                    'name'=>"готовые блюда"
                 ],
                 [
-                    'name'=>"vegetables_fruits"
+                    'name'=>"овощи и фрукты"
                 ],
                 [
-                    'name'=>"milk_egg"
+                    'name'=>"молочные продукты, яйца"
                 ],
                 [
-                    'name'=>"meat_fish"
+                    'name'=>"мясо, рыба"
                 ],
                 [
-                    'name'=>"fish_products_caviar"
+                    'name'=>"рыбные продукты, икра"
                 ],
                 [
-                    'name'=>"frozen"
+                    'name'=>"замороженные продукты"
                 ],
                 [
-                    'name'=>"tea_coffe"
+                    'name'=>"чай, кофе"
                 ],
                 [
-                    'name'=>"beverages"
+                    'name'=>"напитки"
                 ],
                 [
-                    'name'=>"tobacco"
+                    'name'=>"табак"
                 ],
                 [
-                    'name'=>"goods_for_animals"
+                    'name'=>"товары для животных"
                 ],
                 [
-                    'name'=>"goods_for_children"
+                    'name'=>"товары для детей"
                 ],
                 [
-                    'name'=>"cosmetics_and_hygiene"
+                    'name'=>"косметика гигиена"
                 ],
                 [
-                    'name'=>"goods_for_home"
+                    'name'=>"товары для дома"
                 ],
                 [
-                    'name'=>"cosmetics_and_hygiene"
+                    'name'=>"косметика и гигиена"
                 ],
                 [
-                    'name'=>"clothes_shoes"
-                ],
-                [
-                    'name'=>"household_goods"
+                    'name'=>"одежда, обувь"
                 ]
             ]
         );

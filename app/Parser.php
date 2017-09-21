@@ -7,7 +7,7 @@ use phpQuery;
 
 class Parser extends Model
 {
-    protected static function getContentUrl($url)
+    protected function getContentUrl($url)
     {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
@@ -17,8 +17,8 @@ class Parser extends Model
         return $res;
     }
 
-    public static function parser($url){
-        $html = self::getContentUrl($url);
+    public function parser($url){
+        $html = $this->getContentUrl($url);
         return $doc = PhpQuery::newDocument($html);
     }
 

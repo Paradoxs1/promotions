@@ -134,21 +134,19 @@ class Shops extends Model
 
     public function Silpo()
     {
-
-//        $url = [
-//            'http://silpo.ua/ru/actions/priceoftheweek/',
-//            'http://silpo.ua/ru/actions/specialpropositions/',
-//            'http://silpo.ua/ru/actions/hotproposal/',
-//            'http://silpo.ua/ru/actions/weekofchildhood/',
-//            'http://silpo.ua/ru/actions/ownimport/'
-//        ];
-        $url = 'http://silpo.ua/ru/actions/priceoftheweek/';
+        $url = [
+            'http://silpo.ua/ru/actions/priceoftheweek/',
+            'http://silpo.ua/ru/actions/specialpropositions/',
+            'http://silpo.ua/ru/actions/hotproposal/',
+            'http://silpo.ua/ru/actions/weekofchildhood/',
+            'http://silpo.ua/ru/actions/ownimport/'
+        ];
         $start = 0;
         $end = 100;
 
-        //foreach ($url as $u){
-            $this->SilpoParser($url, $start, $end);
-       // }
+        foreach ($url as $u){
+            $this->SilpoParser($u, $start, $end);
+        }
 
         return redirect()->route('promotions');
     }
@@ -161,9 +159,9 @@ class Shops extends Model
             $silpo = $parser->parser($u);
 
             $shop = '\images\silpo-small.png';
-            $name_action = $silpo->find("div.ots div div div font:first")->text();
+            $name_action = 'Акции в Сильпо';
 
-            foreach ($silpo->find("div.ots > div.photo ") as $div) {
+            foreach ($silpo->find(".photo ") as $div){
                 $div = pq($div);
 
                 $desc = $div->find('h3')->text();
@@ -171,15 +169,18 @@ class Shops extends Model
                 $href_img = $div->find('a')->attr('href');
                 $img = 'http://silpo.ua/' . $href_img;
 
-                $price_dollar = $div->find('.pr span.hrn')->text();
-                $price_cent = $div->find('.pr span.kop')->text();
+                $price_cent = $div->find('.pr .kop, .old_price sup, ')->text();
+                $div->find('.old_price sup')->remove();
+                $price_dollar = $div->find('.pr .hrn, .old_price .hrn')->text();
+
                 if (empty($price_dollar) || empty($price_cent)) {
                     $price_dollar = 0;
                     $price_cent = 0;
                 }
                 $price = $price_dollar + $price_cent / 100;
-                $price_dollar_sale = $div->find('.price_2014_new span.hrn')->text();
-                $price_cent_sale = $div->find('.price_2014_new span.kop')->text();
+
+                $price_dollar_sale = $div->find('.price_2014_new span.hrn, .new_price .hrn, .price-hot-new .hrn, .price-child-new .hrn, .ownimp_new .hrn')->text();
+                $price_cent_sale = $div->find('.price_2014_new span.kop, .new_price .kop, .price-hot-new .kop, .price-child-new .kop, .ownimp_new .hrn')->text();
                 $price_sale = $price_dollar_sale + $price_cent_sale / 100;
 
                 if (!empty($price_sale) && !empty($price)) {
@@ -208,7 +209,7 @@ class Shops extends Model
             }
 
             $http = 'http://silpo.ua';
-            $next1 = $parser->find('div.page div.act')->next()->find('a')->attr('href');
+            $next1 = $silpo->find('div.page div.act')->next()->find('a')->attr('href');
             $url = $http . $next1;
 
             if (!empty($next1)) {

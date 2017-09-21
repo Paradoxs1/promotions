@@ -22,7 +22,6 @@ class ParseController extends Controller
         $atbSevenDay = $atb->AtbSevenDay();
 
         if($atbEkonomy && $atbSevenDay){
-
             return redirect()->route('promotions');
         }
 
@@ -33,7 +32,8 @@ class ParseController extends Controller
     public function parseSilpo()
     {
         $silpo = new Shops();
-        return $silpo->Silpo();
+        $silpo->Silpo();
+        return redirect()->route('promotions');
 
     }
 

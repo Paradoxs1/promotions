@@ -64,7 +64,6 @@ class Shops extends Model
                 $product->price = $price;
                 $product->price_sale = $price_sale;
                 $product->sale = $sale;
-                $product->tag_id = 1;
 
                 $check = DB::select("select img from products where img = ?", ["$img"]);
                 if (empty($check)) {
@@ -144,7 +143,6 @@ class Shops extends Model
                 $product->price = $price;
                 $product->price_sale = $price_sale;
                 $product->sale = $sale;
-                $product->tag_id = 1;
 
                 $check = DB::select("select img from products where img = ?", ["$img"]);
                 if (empty($check)) {
@@ -205,7 +203,6 @@ class Shops extends Model
             $product->price = $price;
             $product->price_sale = $price_sale;
             $product->sale = $sale;
-            $product->tag_id = 1;
 
             $check = DB::select("select name from products where name = ?", ["$name"]);
             if (empty($check)) {
@@ -217,7 +214,7 @@ class Shops extends Model
 
     }
 
-    public static function KlassTheme()
+    public function KlassTheme()
     {
 
         $parser = new Parser;
@@ -235,7 +232,6 @@ class Shops extends Model
             $product->name_action = $name_action;
             $product->shop = $shop;
             $product->img = $href_img;
-            $product->tag_id = 1;
 
             $check = DB::select("select img from products where img = ?", ["$href_img"]);
             if (empty($check)) {
@@ -244,6 +240,43 @@ class Shops extends Model
         }
 
         return true;
+    }
+
+    public function PosadParser()
+    {
+        $url = [
+            'http://posad.com.ua/goryachee_predlogenie/',
+            'http://posad.com.ua/specials/'
+        ];
+
+        $parser = new Parser;
+
+        $shop = '\images\posad-small.png';
+
+
+        foreach ($url as $u) {
+            $posad = $parser->parser($u);
+            $name_action = $posad->find(".entry-title")->text();
+
+            foreach ($posad->find(".ngg-galleryoverview > div") as $li) {
+                $li = pq($li);
+
+                $img = $li->find('img')->attr('src');
+
+                $product = new Product();
+
+                $product->name_action = $name_action;
+                $product->shop = $shop;
+                $product->img = $img;
+
+                $check = DB::select("select img from products where img = ?", ["$img"]);
+                if (empty($check)) {
+                    $product->save();
+                }
+            }
+        }
+
+        return redirect()->route('promotions');
     }
 
 }

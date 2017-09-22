@@ -23,6 +23,11 @@
                     <h1>Парсить Класс</h1>
                     <input type="submit" value="Парсить">
                 </form>
+                <form action="{{ route('parsePosad') }}" method="post" class="contact-form">
+                    {{ csrf_field() }}
+                    <h1>Парсить Посад</h1>
+                    <input type="submit" value="Парсить">
+                </form>
             </div>
         </section>
     </main>

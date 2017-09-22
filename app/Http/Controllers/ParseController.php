@@ -24,15 +24,14 @@ class ParseController extends Controller
 
     public function parseSilpo()
     {
-        $silpo = new Shops();
+        $silpo = new Shops;
         $silpo->Silpo();
         return redirect()->route('promotions');
     }
 
     public function parseKlass()
     {
-
-        $klass = new Shops();
+        $klass = new Shops;
         $klassTen = $klass->KlassTen();
         $klassTheme = $klass->KlassTheme();
 
@@ -40,5 +39,12 @@ class ParseController extends Controller
             return redirect()->route('promotions');
         }
 
+    }
+
+    public function parsePosad()
+    {
+        $posad = new Shops;
+        $posad->PosadParser();
+        return redirect()->route('promotions');
     }
 }

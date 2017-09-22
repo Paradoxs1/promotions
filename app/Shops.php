@@ -11,31 +11,38 @@ use DB;
 class Shops extends Model
 {
 
-    public function AtbEkonomy()
+    public function AtbParser()
     {
+
+        $url = [
+            'http://www.atbmarket.com/ru/hot/akcii/economy/',
+            'http://www.atbmarket.com/ru/hot/akcii/7day/'
+        ];
+
         $parser = new Parser;
-        $atb = $parser->parser('http://www.atbmarket.com/ru/hot/akcii/economy/');
+        foreach ($url as $u) {
+            $atb = $parser->parser($u);
+        }
 
         $shop = '\images\atb-small.png';
         $name_action = $atb->find("title")->text();
 
-        foreach ($atb->find("ul#cat0 > li") as $li) {
+        foreach ($atb->find(".promo_list li") as $li) {
             $li = pq($li);
 
-            $desc = $li->find('.promo_info span.promo_info_text span')->text();
-            $li->find('.promo_info span.promo_info_text span')->remove();
-            $name = trim($li->find('.promo_info span.promo_info_text')->text());
+            $desc = $li->find('.promo_info_text span')->text();
+            $li->find('.promo_info_text span')->remove();
+            $name = trim($li->find('.promo_info_text')->text());
 
             $href_img = $li->find('.promo_image_wrap img')->attr('src');
             $href_img = str_replace('_295_235_f', '', $href_img);
             $img = 'http://www.atbmarket.com/' . $href_img;
 
-            $price = $li->find('.price_box span.promo_old_price')->text();
-            $li->find('.price_box div.promo_price span.currency')->remove();
-            $price_cent = $li->find('.price_box div.promo_price span')->html();
-            $li->find('.promo_info span.promo_info_text span')->remove();
-            $li->find('.price_box div.promo_price span')->remove();
-            $price_dollar = $li->find('.price_box div.promo_price')->html();
+            $price = $li->find('.promo_old_price')->text();
+            $li->find('.promo_price .currency')->remove();
+            $price_cent = $li->find('.promo_price span')->html();
+            $li->find('.promo_price span')->remove();
+            $price_dollar = $li->find('.promo_price')->html();
             $price_sale = $price_dollar + $price_cent / 100;
 
             if (!empty($price_sale) && !empty($price)) {
@@ -65,71 +72,7 @@ class Shops extends Model
             }
         }
 
-
-        return true;
-    }
-
-    public function AtbSevenDay()
-    {
-        $parser = new Parser;
-        $atb = $parser->parser('http://www.atbmarket.com/ru/hot/akcii/7day/');
-
-        $shop = '\images\atb-small.png';
-        $name_action = $atb->find("title")->text();
-
-        foreach ($atb->find("div.tab-content > ul") as $ul) {
-            $ul = pq($ul);
-
-            foreach ($ul->find("li") as $li) {
-                $li = pq($li);
-
-                $desc = $li->find('.promo_info span.promo_info_text span')->text();
-                $li->find('.promo_info span.promo_info_text span')->remove();
-                $name = trim($li->find('div.promo_info span.promo_info_text')->text());
-
-                $href_img = $li->find('.promo_image_wrap img')->attr('src');
-                $href_img = str_replace('_295_235_f', '', $href_img);
-                $img = 'http://www.atbmarket.com/' . $href_img;
-
-                $price = $li->find('.price_box span.promo_old_price')->text();
-                $li->find('.price_box div.promo_price span.currency')->remove();
-                $price_cent = $li->find('.price_box div.promo_price span')->html();
-                $li->find('.promo_info span.promo_info_text span')->remove();
-                $li->find('.price_box div.promo_price span')->remove();
-                $price_dollar = $li->find('.price_box div.promo_price')->html();
-                $price_sale = $price_dollar + $price_cent / 100;
-
-                if (!empty($price_sale) && !empty($price)) {
-                    $sale = ($price - $price_sale) / $price * 100;
-                    $sale = ceil($sale);
-                }
-
-                $product = new Product();
-
-                $product->name = $name;
-                $product->name_action = $name_action;
-                $product->shop = $shop;
-                $product->img = $img;
-                $product->description = $desc;
-                if (empty($price)) {
-                    $price = null;
-                    $sale = 0;
-                }
-                $product->price = $price;
-                $product->price_sale = $price_sale;
-                $product->sale = $sale;
-                $product->tag_id = 1;
-
-                $check = DB::select("select img from products where img = ?", ["$img"]);
-                if (empty($check)) {
-                    $product->save();
-                }
-            }
-        }
-
-
-        return true;
-
+        return redirect()->route('promotions');
     }
 
     public function Silpo()
@@ -144,7 +87,7 @@ class Shops extends Model
         $start = 0;
         $end = 100;
 
-        foreach ($url as $u){
+        foreach ($url as $u) {
             $this->SilpoParser($u, $start, $end);
         }
 
@@ -161,7 +104,7 @@ class Shops extends Model
             $shop = '\images\silpo-small.png';
             $name_action = 'Акции в Сильпо';
 
-            foreach ($silpo->find(".photo ") as $div){
+            foreach ($silpo->find(".photo ") as $div) {
                 $div = pq($div);
 
                 $desc = $div->find('h3')->text();
@@ -219,7 +162,8 @@ class Shops extends Model
         }
     }
 
-    public function KlassTen(){
+    public function KlassTen()
+    {
 
         $parser = new Parser;
         $klass = $parser->parser('http://www.klass.com.ua/catalog.html?cat_id=16');
@@ -234,8 +178,8 @@ class Shops extends Model
 
             $href_img = $li->find('.img')->attr('style');
             $href = stristr($href_img, 'gallery');
-            $pos = strrpos ($href, ')');
-            $img = 'http://www.klass.com.ua/' . substr($href, 0 , $pos);
+            $pos = strrpos($href, ')');
+            $img = 'http://www.klass.com.ua/' . substr($href, 0, $pos);
 
             $price_old = $li->find('.old_price_through')->text();
             $price_old_cop = $li->find('.old_price_kop')->text();
@@ -272,7 +216,8 @@ class Shops extends Model
 
     }
 
-    public static function KlassTheme(){
+    public static function KlassTheme()
+    {
 
         $parser = new Parser;
         $klass = $parser->parser('http://www.klass.com.ua/catalog.html?cat_id=43');

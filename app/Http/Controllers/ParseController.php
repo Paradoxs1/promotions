@@ -18,15 +18,8 @@ class ParseController extends Controller
     public function parseAtb()
     {
         $atb = new Shops;
-        $atbEkonomy = $atb->AtbEkonomy();
-        $atbSevenDay = $atb->AtbSevenDay();
-
-        if($atbEkonomy && $atbSevenDay){
-            return redirect()->route('promotions');
-        }
-
-        return redirect()->route('home');
-
+        $atb->AtbParser();
+        return redirect()->route('promotions');
     }
 
     public function parseSilpo()
@@ -34,16 +27,16 @@ class ParseController extends Controller
         $silpo = new Shops();
         $silpo->Silpo();
         return redirect()->route('promotions');
-
     }
 
-    public function parseKlass(){
+    public function parseKlass()
+    {
 
         $klass = new Shops();
         $klassTen = $klass->KlassTen();
         $klassTheme = $klass->KlassTheme();
 
-        if($klassTheme && $klassTen){
+        if ($klassTheme && $klassTen) {
             return redirect()->route('promotions');
         }
 

@@ -279,4 +279,66 @@ class Shops extends Model
         return redirect()->route('promotions');
     }
 
+    public function BrusnichkaParser()
+    {
+        $parser = new Parser;
+        $brusnichka = $parser->parser('http://brusnichka.com.ua:81/pokupatelyam/aktsii/');
+        $shop = '\images\brusnichka-small.png';
+
+        foreach ($brusnichka->find(".weekly-promo-item") as $li) {
+            $li = pq($li);
+
+            $name = trim($li->find('.name span')->text());
+            $li->find('.name span')->remove();
+            $desc = $li->find('.name')->text();
+
+            $href_img = $li->find('.img')->attr('style');
+            $href = stristr($href_img, '/upload');
+            $pos = strrpos($href, "'");
+            $img = 'https://brusnichka.com.ua' . substr($href, 0, $pos);
+
+            $price_old_cop = $li->find('.price__old .coins')->text();
+            $li->find('.price__old .coins')->remove();
+            $price_old = $li->find('.price__old')->text();
+            if (empty($price_old) || empty($price_old_cop)) {
+                $price_old = 0;
+                $price_old_cop = 0;
+            }
+            $price = $price_old + $price_old_cop / 100;
+
+            $price_new_cop = $li->find('.price__new .coins')->text();
+            $li->find('.price__new .coins')->remove();
+            $price_new = $li->find('.price__new')->text();
+            $price_sale = $price_new + $price_new_cop / 100;
+
+
+            if (!empty($price_sale) && !empty($price)) {
+                $sale = ($price - $price_sale) / $price * 100;
+                $sale = ceil($sale);
+            }
+
+            $product = new Product();
+
+            $product->name = $name;
+            $product->name_action = 'Лучшая цена';
+            $product->shop = $shop;
+            $product->img = $img;
+            $product->description = $desc;
+            if (empty($price)) {
+                $price = null;
+                $sale = 0;
+            }
+            $product->price = $price;
+            $product->price_sale = $price_sale;
+            $product->sale = $sale;
+
+            $check = DB::select("select img from products where img = ?", ["$img"]);
+            if (empty($check)) {
+                $product->save();
+            }
+        }
+
+        return redirect()->route('promotions');
+    }
+
 }

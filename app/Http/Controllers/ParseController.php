@@ -47,4 +47,11 @@ class ParseController extends Controller
         $posad->PosadParser();
         return redirect()->route('promotions');
     }
+
+    public function parseBrusnichka()
+    {
+        $brusnichka = new Shops;
+        $brusnichka->BrusnichkaParser();
+        return redirect()->route('promotions');
+    }
 }

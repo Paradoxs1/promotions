@@ -1,5 +1,5 @@
 @section('head')
-<!doctype html>
+        <!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -169,6 +169,11 @@
                     </div>
                 </div>
             </div>
+            <div class="container">
+                <div class="paginate">
+                    <h1>{{$data->render()}}</h1>
+                </div>
+            </div>
         </section>
         <section class="info">
             <div class="container">
@@ -201,6 +206,8 @@
         </section>
     </main>
 @show
+
+
 
 @section('footer')
     <footer>

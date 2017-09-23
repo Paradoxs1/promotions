@@ -1176,3 +1176,20 @@ footer p{
         line-height: 30px;
     }
 }
+
+/*****************paginate********************/
+
+.paginate {
+    margin: 0 auto;
+}
+.paginate ul {
+    margin: 0;
+    padding: 0;
+}
+.paginate li {
+    display: inline;
+    margin-right: 4px;
+    padding: 2px;
+}
+
+/*****************paginate********************/

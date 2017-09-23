@@ -72,7 +72,7 @@ class Shops extends Model
             }
         }
 
-        return redirect()->route('promotions');
+        return true;
     }
 
     public function Silpo()
@@ -91,7 +91,7 @@ class Shops extends Model
             $this->SilpoParser($u, $start, $end);
         }
 
-        return redirect()->route('promotions');
+        return true;
     }
 
     public function SilpoParser($u, $start, $end)
@@ -210,7 +210,7 @@ class Shops extends Model
             }
         }
 
-        return redirect()->route('promotions');
+        return true;
 
     }
 
@@ -276,7 +276,7 @@ class Shops extends Model
             }
         }
 
-        return redirect()->route('promotions');
+        return true;
     }
 
     public function BrusnichkaParser()
@@ -338,7 +338,7 @@ class Shops extends Model
             }
         }
 
-        return redirect()->route('promotions');
+        return true;
     }
 
 }

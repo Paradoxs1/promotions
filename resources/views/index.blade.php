@@ -171,7 +171,9 @@
             </div>
             <div class="container">
                 <div class="paginate">
-                    <h1>{{$data->render()}}</h1>
+                    @if(!empty($data))
+                    <h1>{{ $data->render() }}</h1>
+                    @endif
                 </div>
             </div>
         </section>

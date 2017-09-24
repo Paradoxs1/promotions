@@ -27,6 +27,8 @@ class Shops extends Model
             $shop = '\images\atb-small.png';
             $name_action = $atb->find("title")->text();
 
+            $parser->statusProductOff($name_action);
+
             foreach ($atb->find(".promo_list li") as $li) {
                 $li = pq($li);
 
@@ -65,8 +67,12 @@ class Shops extends Model
                 $product->price_sale = $price_sale;
                 $product->sale = $sale;
 
-                $check = DB::select("select img from products where img = ?", ["$img"]);
-                if (empty($check)) {
+                $oldProduct = Product::where('img', $img)->first();
+
+                if ($oldProduct) {
+                    $oldProduct->status = 1;
+                    $oldProduct->save();
+                } else {
                     $product->save();
                 }
             }

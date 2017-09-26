@@ -29,3 +29,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('catalog', 'CatalogController@catalog')->name('catalog');
+
+Route::get('/atb', 'ShopPageController@showAtb')->name('atb');
+Route::get('/silpo', 'ShopPageController@showSilpo')->name('silpo');

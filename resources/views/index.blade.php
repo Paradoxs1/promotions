@@ -112,8 +112,8 @@
             <div class="container">
                 <div class="slider-title">Выберите супермаркет</div>
                 <div class="slider-market">
-                    <div><a href="#"><img src="{{asset('images/atb.png')}}" alt=""></a></div>
-                    <div><a href="#"><img src="{{asset('images/brusnichka.png')}}" alt=""></a></div>
+                    <div><a href={{ route('atb') }}><img src="{{asset('images/atb.png')}}" alt=""></a></div>
+                    <div><a href={{ route('silpo') }}><img src="{{asset('images/brusnichka.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/digma.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/fozzy.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/karavan.png')}}" alt=""></a></div>

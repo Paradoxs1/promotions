@@ -24,13 +24,6 @@ class Parser extends Model
         return $doc = PhpQuery::newDocument($html);
     }
 
-    public function checkCategoryProduct($img, $product)
-    {
-
-
-        return true;
-
-    }
 
     public function statusProductOff($name_action)
     {

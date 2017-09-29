@@ -26,7 +26,7 @@ class HomeController extends Controller
     public function index()
     {
 
-        $data = Product::where('category_id', null)->take(100)->get();
+        $data = Product::where('category_id', null)->where('status', '=', 1)->take(100)->get();
         $catalog = Catalog::all();
         return view('home')->withData($data)->withCatalog($catalog);
     }

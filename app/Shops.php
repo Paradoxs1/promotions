@@ -93,6 +93,10 @@ class Shops extends Model
         $start = 0;
         $end = 100;
 
+        $parser = new Parser;
+        $name_action = 'Акции в Сильпо';
+        $parser->statusProductOff($name_action);
+
         foreach ($url as $u) {
             $this->SilpoParser($u, $start, $end);
         }
@@ -106,11 +110,11 @@ class Shops extends Model
 
             $parser = new Parser;
             $silpo = $parser->parser($u);
-
-            $shop = '\images\silpo-small.png';
             $name_action = 'Акции в Сильпо';
+            $shop = '\images\silpo-small.png';
 
             foreach ($silpo->find(".photo ") as $div) {
+
                 $div = pq($div);
 
                 $desc = $div->find('h3')->text();
@@ -150,8 +154,12 @@ class Shops extends Model
                 $product->price_sale = $price_sale;
                 $product->sale = $sale;
 
-                $check = DB::select("select img from products where img = ?", ["$img"]);
-                if (empty($check)) {
+                $oldProduct = Product::where('img', $img)->first();
+
+                if ($oldProduct) {
+                    $oldProduct->status = 1;
+                    $oldProduct->save();
+                } else {
                     $product->save();
                 }
             }
@@ -175,6 +183,8 @@ class Shops extends Model
 
         $shop = '\images\klass-small.png';
         $name_action = $klass->find('#tttt strong')->text();
+
+        $parser->statusProductOff($name_action);
 
         foreach ($klass->find("#goods td[valign='top']") as $li) {
             $li = pq($li);
@@ -210,8 +220,12 @@ class Shops extends Model
             $product->price_sale = $price_sale;
             $product->sale = $sale;
 
-            $check = DB::select("select name from products where name = ?", ["$name"]);
-            if (empty($check)) {
+            $oldProduct = Product::where('img', $img)->first();
+
+            if ($oldProduct) {
+                $oldProduct->status = 1;
+                $oldProduct->save();
+            } else {
                 $product->save();
             }
         }
@@ -229,6 +243,8 @@ class Shops extends Model
         $shop = '\images\klass-small.png';
         $name_action = $klass->find('#tttt strong')->text();
 
+        $parser->statusProductOff($name_action);
+
         foreach ($klass->find(".tttt tbody img") as $li) {
             $li = pq($li);
             $href_img = $li->attr('src');
@@ -239,8 +255,12 @@ class Shops extends Model
             $product->shop = $shop;
             $product->img = $href_img;
 
-            $check = DB::select("select img from products where img = ?", ["$href_img"]);
-            if (empty($check)) {
+            $oldProduct = Product::where('img', $shop)->first();
+
+            if ($oldProduct) {
+                $oldProduct->status = 1;
+                $oldProduct->save();
+            } else {
                 $product->save();
             }
         }
@@ -259,10 +279,10 @@ class Shops extends Model
 
         $shop = '\images\posad-small.png';
 
-
         foreach ($url as $u) {
             $posad = $parser->parser($u);
             $name_action = $posad->find(".entry-title")->text();
+            $parser->statusProductOff($name_action);
 
             foreach ($posad->find(".ngg-galleryoverview > div") as $li) {
                 $li = pq($li);
@@ -275,8 +295,12 @@ class Shops extends Model
                 $product->shop = $shop;
                 $product->img = $img;
 
-                $check = DB::select("select img from products where img = ?", ["$img"]);
-                if (empty($check)) {
+                $oldProduct = Product::where('img', $img)->first();
+
+                if ($oldProduct) {
+                    $oldProduct->status = 1;
+                    $oldProduct->save();
+                } else {
                     $product->save();
                 }
             }
@@ -290,6 +314,9 @@ class Shops extends Model
         $parser = new Parser;
         $brusnichka = $parser->parser('http://brusnichka.com.ua:81/pokupatelyam/aktsii/');
         $shop = '\images\brusnichka-small.png';
+        $name_action = 'Лучшая цена';
+
+        $parser->statusProductOff($name_action);
 
         foreach ($brusnichka->find(".weekly-promo-item") as $li) {
             $li = pq($li);
@@ -326,7 +353,7 @@ class Shops extends Model
             $product = new Product();
 
             $product->name = $name;
-            $product->name_action = 'Лучшая цена';
+            $product->name_action = $name_action;
             $product->shop = $shop;
             $product->img = $img;
             $product->description = $desc;
@@ -338,8 +365,12 @@ class Shops extends Model
             $product->price_sale = $price_sale;
             $product->sale = $sale;
 
-            $check = DB::select("select img from products where img = ?", ["$img"]);
-            if (empty($check)) {
+            $oldProduct = Product::where('img', $img)->first();
+
+            if ($oldProduct) {
+                $oldProduct->status = 1;
+                $oldProduct->save();
+            } else {
                 $product->save();
             }
         }

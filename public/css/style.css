@@ -1180,16 +1180,55 @@ footer p{
 /*****************paginate********************/
 
 .paginate {
-    margin: 0 auto;
+    margin: 30px auto;
+    text-align: center;
 }
 .paginate ul {
     margin: 0;
     padding: 0;
 }
 .paginate li {
-    display: inline;
-    margin-right: 4px;
-    padding: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 2px;
 }
+.paginate li a, .paginate span{
+    border-radius: 2px;
+    border: 1px solid #222;
+    display: block;
+    padding: 2px 7px;
+    background-color: #bbb;
+    font: normal 22px/22px 'ArialBold';
+    color: #000;
+    transition: all 0.5s;
+}
+.paginate a:hover, .paginate span:hover{
+    background-color: #fff;
+}
+.paginate .active span{
+    background-color: #f0ad4e;
+}
+.paginate li:first-child a, .paginate li:last-child a, .paginate li:first-child span, .paginate li:last-child span{
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    font-size: 0;
+    padding: 4px 7px;
+}
+.paginate li:first-child a, .paginate li:first-child span{
+    background: url('../images/slide-arrow.png') no-repeat -8px top;
+    margin-right: 5px;
+}
+.paginate li:last-child a, .paginate li:last-child span{
+    background: url('../images/slide-arrow.png') no-repeat -39px top;
+    margin-left: 5px;
+}
+.paginate li:first-child a:hover, .paginate li:first-child span:hover{
+    background-position: -8px bottom;
+}
+.paginate li:last-child a:hover, .paginate li:last-child span:hover{
+    background-position: -39px bottom;
+}
+
 
 /*****************paginate********************/

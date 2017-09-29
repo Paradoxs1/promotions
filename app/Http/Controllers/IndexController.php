@@ -13,7 +13,7 @@ class IndexController extends Controller
     {
         if (view()->exists('index')) {
 
-            $data = Product::where('status', 1)->paginate(12);
+            $data = Product::where('status', 1)->paginate(51);
 
             return view('index')->withData($data)->withTitle('promotions | home');
         }

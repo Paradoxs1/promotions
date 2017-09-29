@@ -112,16 +112,16 @@
             <div class="container">
                 <div class="slider-title">Выберите супермаркет</div>
                 <div class="slider-market">
-                    <div><a href={{ route('atb') }}><img src="{{asset('images/atb.png')}}" alt=""></a></div>
-                    <div><a href={{ route('silpo') }}><img src="{{asset('images/brusnichka.png')}}" alt=""></a></div>
+                    <div><a href="{{ route('atb') }}"><img src="{{asset('images/atb.png')}}" alt=""></a></div>
+                    <div><a href="{{ route('brusnichka') }}"><img src="{{asset('images/brusnichka.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/digma.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/fozzy.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/karavan.png')}}" alt=""></a></div>
-                    <div><a href="#"><img src="{{asset('images/klass.png')}}" alt=""></a></div>
+                    <div><a href="{{ route('klass') }}"><img src="{{asset('images/klass.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/metro.png')}}" alt=""></a></div>
-                    <div><a href="#"><img src="{{asset('images/posad.png')}}" alt=""></a></div>
+                    <div><a href="{{ route('posad') }}"><img src="{{asset('images/posad.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/rost.png')}}" alt=""></a></div>
-                    <div><a href="#"><img src="{{asset('images/silpo.png')}}" alt=""></a></div>
+                    <div><a href="{{ route('silpo') }}"><img src="{{asset('images/silpo.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/vostorg.png')}}" alt=""></a></div>
                 </div>
             </div>
@@ -172,7 +172,7 @@
             <div class="container">
                 <div class="paginate">
                     @if(!empty($data))
-                    <h1>{{ $data->render() }}</h1>
+                    {{ $data->render() }}
                     @endif
                 </div>
             </div>

@@ -32,3 +32,6 @@ Route::post('catalog', 'CatalogController@catalog')->name('catalog');
 
 Route::get('/atb', 'ShopPageController@showAtb')->name('atb');
 Route::get('/silpo', 'ShopPageController@showSilpo')->name('silpo');
+Route::get('/klass', 'ShopPageController@showKlass')->name('klass');
+Route::get('/posad', 'ShopPageController@showPosad')->name('posad');
+Route::get('/brusnichka', 'ShopPageController@showBrusnichka')->name('brusnichka');

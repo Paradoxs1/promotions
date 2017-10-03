@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Product;
-use App\Category;
+use App\Catalog;
 
 class IndexController extends Controller
 {
@@ -14,9 +14,12 @@ class IndexController extends Controller
         if (view()->exists('index')) {
 
             $data = Product::where('status', 1)->paginate(51);
+            $catalog = Catalog::all();
 
-            return view('index')->withData($data)->withTitle('promotions | home');
+            return view('index')->withData($data)->withCatalog($catalog)->withTitle('promotions | home');
+        }else{
+            $data = 'Sorry, but nothing found.';
+            return view('welcome')->withData($data);
         }
-        return view('welcome')->withTitle('View not found');
     }
 }

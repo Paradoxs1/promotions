@@ -30,6 +30,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('catalog', 'CatalogController@catalog')->name('catalog');
 
+Route::post('search', 'SearchController@search')->name('search');
+
 Route::get('/atb', 'ShopPageController@showAtb')->name('atb');
 Route::get('/silpo', 'ShopPageController@showSilpo')->name('silpo');
 Route::get('/klass', 'ShopPageController@showKlass')->name('klass');

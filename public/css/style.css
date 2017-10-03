@@ -287,6 +287,8 @@ header .close:hover{
     background-color: #ff2728;
 }
 .search-block-middle{
+    height: 200px;
+    overflow-y: scroll;
     padding: 5px 0;
 }
 .fa-minus, .fa-plus, .search-block-middle label{
@@ -500,7 +502,7 @@ main .tab_item{
     margin: 20px 0;
     border: 1px solid #888;
     border-radius: 5px;
-    background-color: #fff;
+    background-color: #ededed;
 
     -webkit-box-shadow: 0 0 6px #888;
     -moz-box-shadow: 0 0 6px #888;
@@ -524,6 +526,7 @@ main .tab_item{
 .product-img{
     text-align: center;
     line-height: 300px;
+    background-color: #fff;
     border-top: 1px solid #888;
     border-bottom: 1px solid #888;
 }
@@ -534,8 +537,7 @@ main .tab_item{
     vertical-align: middle;
 }
 .product-top{
-    padding: 5px 0 0 10px;
-    background-color: #ededed;
+    padding: 5px 0 5px 10px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
@@ -543,7 +545,7 @@ main .tab_item{
     margin-right: 10px;
 }
 .product-top p{
-    padding-top: 5px;
+    padding-top: 12px;
 }
 .product-top .sale{
     font-size: 17px;
@@ -556,7 +558,6 @@ main .tab_item{
 .product-info{
     text-align: center;
     padding: 5px 10px 15px 5px;
-    background-color: #ededed;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }

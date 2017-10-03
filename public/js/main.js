@@ -73,10 +73,10 @@ $(document).ready(function(){
     /*********search*********/
     var str = '', content, arr = [], num = 0;
 
-    $('.category-btn, .category>p label').click(function(){
-        $(this).parent().find('.category-btn').toggleClass('active');
-        $(this).parent().next().slideToggle();
-    });
+    // $('.category-btn, .category>p label').click(function(){
+    //     $(this).parent().find('.category-btn').toggleClass('active');
+    //     $(this).parent().next().slideToggle();
+    // });
 
     $('.btn-clear').click(function(event){
         event.preventDefault();
@@ -90,11 +90,50 @@ $(document).ready(function(){
     });
 
 
+    // $('.category input[type="checkbox"]').click(function(){
+    //     if($(this).parent().next().not(':visible')){
+    //         $(this).parent().next().slideDown();
+    //         $(this).prev().addClass('active');
+    //     }
+    //     content = $(this).next().text();
+    //
+    //     if($(this).prop('checked') != false){
+    //         arr.push($(this).next().text());
+    //
+    //         for(var i = 0; i<=arr.length; i++) {
+    //
+    //             if (arr.length == 1) {
+    //                 str = content;
+    //             } else if (arr.length != 1) {
+    //                 str = '';
+    //                 for (var key in arr) {
+    //                     str += arr[key] + ', ';
+    //                 }
+    //             }
+    //             $(this).parents('.search-block').find('.search-block-top input').val(str);
+    //         }
+    //     }else if($(this).prop('checked') == false){
+    //
+    //         for(var i = 0; i<=arr.length; i++){
+    //             if(content == arr[i]){
+    //                 num = i;
+    //             }
+    //         }
+    //
+    //         delete arr[num];
+    //
+    //         str = '';
+    //         for (var key in arr) {
+    //             str += arr[key] + ', ';
+    //         }
+    //
+    //         $(this).parents('.search-block').find('.search-block-top input').val(str);
+    //     }
+    //
+    // });
+
     $('.category input[type="checkbox"]').click(function(){
-        if($(this).parent().next().not(':visible')){
-            $(this).parent().next().slideDown();
-            $(this).prev().addClass('active');
-        }
+
         content = $(this).next().text();
 
         if($(this).prop('checked') != false){

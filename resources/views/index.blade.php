@@ -1,5 +1,5 @@
 @section('head')
-        <!doctype html>
+<!doctype html>
 <html lang="{{ app()->getLocale() }}">
 <head>
     <meta charset="utf-8">
@@ -64,37 +64,61 @@
         </div>
         <div class="search">
             <div class="button-search">Поиск товаров</div>
-            <form action="" class="search-block">
+            <form action="{{ route('search') }}" method="post" class="search-block">
+                {{ csrf_field() }}
                 <div class="search-block-top">
-                    <input type="text" placeholder="Введите название товара">
+                    <input type="text" placeholder="Введите название категории">
                 </div>
                 <div class="search-block-middle">
                     <div class="category">
-                        <p><span class="category-btn"><i class="fa fa-plus" aria-hidden="true"></i><i
-                                        class="fa fa-minus" aria-hidden="true"></i></span><input type="checkbox"><label
-                                    for="">Категория</label></p>
+                        @if(!empty($catalog))
+                            @foreach($catalog as $cat)
+                                <p>
+                                    <input type="checkbox" name="{{ $cat->id }}" id="category{{ $cat->id }}"><label for="category{{ $cat->id }}">{{ $cat->name }}</label>
+                                </p>
+                            @endforeach
+                        @endif
+                    </div>
+                    <!--
+                    <div class="category">
+                        <p>
+                            <span class="category-btn">
+                                <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+                            </span>
+                            <input type="checkbox"><label for="">Категория</label>
+                        </p>
                         <div class="category">
-                            <p><span class="category-btn"><i class="fa fa-plus" aria-hidden="true"></i><i
-                                            class="fa fa-minus" aria-hidden="true"></i></span><input
-                                        type="checkbox"><label for="">Категория2</label></p>
+                            <p>
+                                <span class="category-btn">
+                                    <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+                                </span>
+                                <input type="checkbox"><label for="">Категория2</label>
+                            </p>
                             <div class="category">
                                 <p><input type="checkbox" id="cat"><label for="cat">Товар</label></p>
                             </div>
                         </div>
                     </div>
                     <div class="category">
-                        <p><span class="category-btn"><i class="fa fa-plus" aria-hidden="true"></i><i
-                                        class="fa fa-minus" aria-hidden="true"></i></span><input type="checkbox"><label
-                                    for="">Категория3</label></p>
+                        <p>
+                            <span class="category-btn">
+                                <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+                            </span>
+                            <input type="checkbox"><label for="">Категория3</label>
+                        </p>
                         <div class="category">
-                            <p><span class="category-btn"><i class="fa fa-plus" aria-hidden="true"></i><i
-                                            class="fa fa-minus" aria-hidden="true"></i></span><input
-                                        type="checkbox"><label for="">Категория4</label></p>
+                            <p>
+                                <span class="category-btn">
+                                    <i class="fa fa-plus" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i>
+                                </span>
+                                <input type="checkbox"><label for="">Категория4</label>
+                            </p>
                             <div class="category">
                                 <p><input type="checkbox" id="cat1"><label for="cat1">Товар2</label></p>
                             </div>
                         </div>
                     </div>
+                    -->
                 </div>
                 <div class="search-block-bottom">
                     <input type="submit" value="Применить"> <a href="#" class="btn-clear">Очистить</a>
@@ -171,8 +195,10 @@
             </div>
             <div class="container">
                 <div class="paginate">
-                    @if(!empty($data))
-                    {{ $data->render() }}
+                    @if(empty($num))
+                        @if(!empty($data))
+                        {{ $data->render() }}
+                        @endif
                     @endif
                 </div>
             </div>
@@ -215,7 +241,7 @@
     <footer>
         <div class="container">
             <ul>
-                <li><a href="{{ route('home') }}">Главная</a></li>
+                <li><a href="{{ route('promotions') }}">Главная</a></li>
                 <li><a href="{{ route('about') }}">О нас</a></li>
                 <li><a href="{{ route('contact') }}">Связаться с нами</a></li>
             </ul>

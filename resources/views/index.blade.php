@@ -142,7 +142,7 @@
                     <div><a href="#"><img src="{{asset('images/fozzy.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/karavan.png')}}" alt=""></a></div>
                     <div><a href="{{ route('klass') }}"><img src="{{asset('images/klass.png')}}" alt=""></a></div>
-                    <div><a href="#"><img src="{{asset('images/metro.png')}}" alt=""></a></div>
+                    <div><a href="{{ route('velmarket') }}"><img src="{{asset('images/velmart.png')}}" alt=""></a></div>
                     <div><a href="{{ route('posad') }}"><img src="{{asset('images/posad.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/rost.png')}}" alt=""></a></div>
                     <div><a href="{{ route('silpo') }}"><img src="{{asset('images/silpo.png')}}" alt=""></a></div>

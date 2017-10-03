@@ -54,4 +54,12 @@ class ParseController extends Controller
         $brusnichka->BrusnichkaParser();
         return redirect()->route('promotions');
     }
+
+    public function parseVelmarket()
+    {
+        $velmarket = new Shops;
+        $velmarket->VelmarketParser();
+        return redirect()->route('promotions');
+    }
+
 }

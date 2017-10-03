@@ -35,7 +35,7 @@ class ShopPageController extends Controller
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
 
-        return view('shop')->withData($data)->withTitle('promotions | silpo')->withShop($shop);
+        return view('shop')->withData($data)->withTitle('promotions | klass')->withShop($shop);
     }
 
     public function showPosad()
@@ -45,7 +45,7 @@ class ShopPageController extends Controller
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
 
-        return view('shop')->withData($data)->withTitle('promotions | silpo')->withShop($shop);
+        return view('shop')->withData($data)->withTitle('promotions | posad')->withShop($shop);
     }
 
     public function showBrusnichka()
@@ -55,7 +55,17 @@ class ShopPageController extends Controller
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
 
-        return view('shop')->withData($data)->withTitle('promotions | silpo')->withShop($shop);
+        return view('shop')->withData($data)->withTitle('promotions | brusnichka')->withShop($shop);
+    }
+
+    public function showVelmarket()
+    {
+        $shop = 'Velmarket';
+        $shopImg = '\images\velmart-small.png';
+
+        $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+
+        return view('shop')->withData($data)->withTitle('promotions | velmart')->withShop($shop);
     }
 }
 

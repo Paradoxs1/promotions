@@ -378,4 +378,39 @@ class Shops extends Model
         return true;
     }
 
+    public function VelmarketParser()
+    {
+        $parser = new Parser;
+        $velmarket = $parser->parser('http://velmart.ua/ru/actions/product-of-week?c=xarkov');
+        $shop = '\images\velmart-small.png';
+        $velmarket->find('h1 a')->remove();
+        $name_action = $velmarket->find('h1')->text();
+
+        $parser->statusProductOff($name_action);
+
+        foreach ($velmarket->find(".food .block") as $li) {
+            $li = pq($li);
+
+            $href_img = $li->find('img')->attr('src');
+            $img = 'http://velmart.ua' . $href_img;
+
+            $product = new Product();
+
+            $product->name_action = $name_action;
+            $product->shop = $shop;
+            $product->img = $img;
+
+            $oldProduct = Product::where('img', $img)->first();
+
+            if ($oldProduct) {
+                $oldProduct->status = 1;
+                $oldProduct->save();
+            } else {
+                $product->save();
+            }
+        }
+
+        return true;
+    }
+
 }

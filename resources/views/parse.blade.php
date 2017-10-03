@@ -33,6 +33,11 @@
                     <h1>Парсить Брусничку</h1>
                     <input type="submit" value="Парсить">
                 </form>
+                <form action="{{ route('parseVelmarket') }}" method="post" class="contact-form">
+                    {{ csrf_field() }}
+                    <h1>Парсить Velmarket</h1>
+                    <input type="submit" value="Парсить">
+                </form>
             </div>
         </section>
     </main>

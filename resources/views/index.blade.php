@@ -139,7 +139,7 @@
                     <div><a href="{{ route('atb') }}"><img src="{{asset('images/atb.png')}}" alt=""></a></div>
                     <div><a href="{{ route('brusnichka') }}"><img src="{{asset('images/brusnichka.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/digma.png')}}" alt=""></a></div>
-                    <div><a href="#"><img src="{{asset('images/fozzy.png')}}" alt=""></a></div>
+                    <div><a href="{{ route('tavria') }}"><img src="{{asset('images/tavria.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/karavan.png')}}" alt=""></a></div>
                     <div><a href="{{ route('klass') }}"><img src="{{asset('images/klass.png')}}" alt=""></a></div>
                     <div><a href="{{ route('velmarket') }}"><img src="{{asset('images/velmart.png')}}" alt=""></a></div>

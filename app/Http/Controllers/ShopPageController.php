@@ -67,5 +67,15 @@ class ShopPageController extends Controller
 
         return view('shop')->withData($data)->withTitle('promotions | velmart')->withShop($shop);
     }
+
+    public function showTavria()
+    {
+        $shop = 'Таврия B';
+        $shopImg = '\images\tavria-small.png';
+
+        $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+
+        return view('shop')->withData($data)->withTitle('promotions | таврия B')->withShop($shop);
+    }
 }
 

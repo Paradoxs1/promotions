@@ -455,8 +455,6 @@ class Shops extends Model
                 $sale = ($price - $price_sale) / $price * 100;
                 $sale = ceil($sale);
             }
-            echo '<pre>';
-            print_r($sale);
 
             $product = new Product();
 
@@ -473,6 +471,54 @@ class Shops extends Model
             $product->sale = $sale;
 
             $oldProduct = Product::where('img', $img)->first();
+
+            if ($oldProduct) {
+                $oldProduct->status = 1;
+                $oldProduct->save();
+            } else {
+                $product->save();
+            }
+        }
+
+        return true;
+    }
+
+    public function TavriaParserSale()
+    {
+        $parser = new Parser;
+        $tavria = $parser->parser('http://www.tavriav.org/actions/sale/');
+        $shop = '\images\tavria-small.png';
+        $name_action = $tavria->find('h1')->text();
+
+        $parser->statusProductOff($name_action);
+
+        foreach ($tavria->find("tbody tr") as $li) {
+            $li = pq($li);
+
+            $name = trim($li->find('td:first-child')->text());
+            $price_sale = (float) $li->find('td:last-child')->text();
+            $price = (float) $li->find('td:nth-child(2)')->text();
+
+            if (!empty($price_sale) && !empty($price)) {
+                $sale = ($price - $price_sale) / $price * 100;
+                $sale = ceil($sale);
+            }
+
+            $product = new Product();
+
+            $product->name = $name;
+            $product->name_action = $name_action;
+            $product->shop = $shop;
+            $product->img = 'http://promotions/images/product.png';
+            if (empty($price)) {
+                $price = null;
+                $sale = 0;
+            }
+            $product->price = $price;
+            $product->price_sale = $price_sale;
+            $product->sale = $sale;
+
+            $oldProduct = Product::where('name', $name)->first();
 
             if ($oldProduct) {
                 $oldProduct->status = 1;

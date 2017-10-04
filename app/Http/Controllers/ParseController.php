@@ -65,7 +65,11 @@ class ParseController extends Controller
     public function parseTavria()
     {
         $tavria = new Shops;
-        $tavria->TavriaParser();
-        return redirect()->route('promotions');
+        $tavriaParser = $tavria->TavriaParser();
+        $tavriaParserSale = $tavria->TavriaParserSale();
+
+        if($tavriaParser && $tavriaParserSale){
+            return redirect()->route('promotions');
+        }
     }
 }

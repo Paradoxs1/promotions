@@ -72,4 +72,11 @@ class ParseController extends Controller
             return redirect()->route('promotions');
         }
     }
+
+    public function parseOkwine()
+    {
+        $okwine = new Shops;
+        $okwine->Okwine();
+        return redirect()->route('promotions');
+    }
 }

@@ -146,7 +146,7 @@
                     <div><a href="{{ route('posad') }}"><img src="{{asset('images/posad.png')}}" alt=""></a></div>
                     <div><a href="#"><img src="{{asset('images/rost.png')}}" alt=""></a></div>
                     <div><a href="{{ route('silpo') }}"><img src="{{asset('images/silpo.png')}}" alt=""></a></div>
-                    <div><a href="#"><img src="{{asset('images/vostorg.png')}}" alt=""></a></div>
+                    <div><a href="{{ route('okwine') }}"><img src="{{asset('images/okwine.png')}}" alt=""></a></div>
                 </div>
             </div>
         </section>

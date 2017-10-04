@@ -43,6 +43,11 @@
                     <h1>Парсить Таврия B</h1>
                     <input type="submit" value="Парсить">
                 </form>
+                <form action="{{ route('parseOkwine') }}" method="post" class="contact-form">
+                    {{ csrf_field() }}
+                    <h1>Парсить OKwine</h1>
+                    <input type="submit" value="Парсить">
+                </form>
             </div>
         </section>
     </main>

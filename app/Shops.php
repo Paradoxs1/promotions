@@ -531,4 +531,77 @@ class Shops extends Model
         return true;
     }
 
+    public function Okwine()
+    {
+        $url = 'https://okwine.ua/action.html';
+        $start = 0;
+        $end = 100;
+
+        $parser = new Parser;
+        $name_action = 'Акции OKwine';
+        $parser->statusProductOff($name_action);
+
+        $this->OkwineParser($url, $start, $end);
+
+        return true;
+    }
+
+    public function OkwineParser($url, $start, $end)
+    {
+        if ($start < $end) {
+
+            $parser = new Parser;
+            $okwine = $parser->parser($url);
+            $name_action = 'Акции OKwine';
+            $shop = '\images\okwine-small.png';
+
+            foreach ($okwine->find(".block_product ") as $div) {
+
+                $div = pq($div);
+
+                $name = $div->find('.actions a span')->text();
+                $img = $div->find('img')->attr('src');
+
+                $price_sale = (float) $div->find('.special-price span')->text();
+                $price = (float) $div->find('.old-price span')->text();
+
+                if (!empty($price_sale) && !empty($price)) {
+                    $sale = ($price - $price_sale) / $price * 100;
+                    $sale = ceil($sale);
+                }
+
+                $product = new Product();
+                $product->name_action = $name_action;
+                $product->shop = $shop;
+                $product->img = $img;
+                $product->name = $name;
+                if (empty($price)) {
+                    $price = null;
+                    $sale = 0;
+                }
+                $product->price = $price;
+                $product->price_sale = $price_sale;
+                $product->sale = $sale;
+
+                $oldProduct = Product::where('img', $img)->first();
+
+                if ($oldProduct) {
+                    $oldProduct->status = 1;
+                    $oldProduct->save();
+                } else {
+                    $product->save();
+                }
+            }
+
+            $http = 'https://okwine.ua';
+            $next1 = $okwine->find('.pagination .pagination-active')->next()->find('a')->attr('href');
+            $url = $http . $next1;
+
+            if (!empty($next1)) {
+                $start++;
+                $this->OkwineParser($url, $start, $end);
+            }
+        }
+    }
+
 }

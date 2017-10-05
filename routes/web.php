@@ -26,6 +26,7 @@ Route::match(['get', 'post'], '/parse/parseBrusnichka', 'ParseController@parseBr
 Route::match(['get', 'post'], '/parse/parseVelmarket', 'ParseController@parseVelmarket')->name('parseVelmarket');
 Route::match(['get', 'post'], '/parse/parseTavria', 'ParseController@parseTavria')->name('parseTavria');
 Route::match(['get', 'post'], '/parse/parseOkwine', 'ParseController@parseOkwine')->name('parseOkwine');
+Route::match(['get', 'post'], '/parse/parseAntoshka', 'ParseController@parseAntoshka')->name('parseAntoshka');
 
 
 Auth::routes();
@@ -43,3 +44,4 @@ Route::get('/brusnichka', 'ShopPageController@showBrusnichka')->name('brusnichka
 Route::get('/velmarket', 'ShopPageController@showVelmarket')->name('velmarket');
 Route::get('/tavria', 'ShopPageController@showTavria')->name('tavria');
 Route::get('/okwine', 'ShopPageController@showOkwine')->name('okwine');
+Route::get('/antoshka', 'ShopPageController@showAntoshka')->name('antoshka');

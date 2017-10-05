@@ -433,18 +433,18 @@ class Shops extends Model
             $price = $li->find('.price span')->text();
             $li->find('.price span')->remove();
             $pos = strrpos($price, ",");
-            $price_new = ( int ) substr($price, 0, $pos);
+            $price_new = (int) substr($price, 0, $pos);
             $price_new_cop = stristr($price, ',');
             $pos = strrpos($price_new_cop, ' ');
-            $price_new_cop = ( int ) substr($price_new_cop, 1, $pos);
+            $price_new_cop = (int) substr($price_new_cop, 1, $pos);
             $price_sale = $price_new + $price_new_cop / 100;
 
             $price = $li->find('.price')->text();
             $pos = strrpos($price, ",");
-            $price_old = ( int ) substr($price, 0, $pos);
+            $price_old = (int) substr($price, 0, $pos);
             $price_old_cop = stristr($price, ',');
             $pos = strrpos($price_old_cop, ' ');
-            $price_old_cop = ( int ) substr($price_old_cop, 1, $pos);
+            $price_old_cop = (int) substr($price_old_cop, 1, $pos);
             if (empty($price_old) || empty($price_old_cop)) {
                 $price_old = 0;
                 $price_old_cop = 0;
@@ -602,6 +602,63 @@ class Shops extends Model
                 $this->OkwineParser($url, $start, $end);
             }
         }
+    }
+
+    public function AntoshkaParser()
+    {
+        $parser = new Parser;
+        $antoshka = $parser->parser('http://antoshka.ua/actions/offers/online');
+        $shop = '\images\antoshka-small.png';
+        $name_action = 'Акции и скидки Antoshka';
+
+        $parser->statusProductOff($name_action);
+
+        foreach ($antoshka->find(".offer-list__item") as $li) {
+            $li = pq($li);
+
+            $name = trim($li->find('.offer-title')->text());
+            $desc = $li->find('.offer-description')->text();
+            $img = $li->find('img')->attr('src');
+
+            $li->find('.special-price .price span')->remove();
+            $price_sale = trim($li->find('.special-price .price')->html());
+            $price_sale = str_replace(",",'.',$price_sale);
+            $price_sale = preg_replace("/[^x\d|*\.]/","",$price_sale);
+            $price = str_replace(",",'.', str_replace('грн.', '', trim($li->find('.old-price .price')->text())));
+            $price = preg_replace("/[^x\d|*\.]/","",$price);
+
+            if (!empty($price_sale) && !empty($price)) {
+                $sale = ($price - $price_sale) / $price * 100;
+                $sale = ceil($sale);
+            }
+
+            $product = new Product();
+
+            $product->name = $name;
+            $product->description = $desc;
+            $product->name_action = $name_action;
+            $product->shop = $shop;
+            $product->category_id = '14';
+            $product->img = $img;
+            if (empty($price)) {
+                $price = null;
+                $sale = 0;
+            }
+            $product->price = $price;
+            $product->price_sale = $price_sale;
+            $product->sale = $sale;
+
+            $oldProduct = Product::where('img', $img)->first();
+
+            if ($oldProduct) {
+                $oldProduct->status = 1;
+                $oldProduct->save();
+            } else {
+                $product->save();
+            }
+        }
+
+        return true;
     }
 
 }

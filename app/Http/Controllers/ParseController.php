@@ -79,4 +79,11 @@ class ParseController extends Controller
         $okwine->Okwine();
         return redirect()->route('promotions');
     }
+
+    public function parseAntoshka()
+    {
+        $antoshka = new Shops;
+        $antoshka->AntoshkaParser();
+        return redirect()->route('promotions');
+    }
 }

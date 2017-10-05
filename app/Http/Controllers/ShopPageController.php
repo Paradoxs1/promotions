@@ -87,5 +87,15 @@ class ShopPageController extends Controller
 
         return view('shop')->withData($data)->withTitle('Promotions | OKwine')->withShop($shop);
     }
+
+    public function showAntoshka()
+    {
+        $shop = 'Antoshka';
+        $shopImg = '\images\antoshka-small.png';
+
+        $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+
+        return view('shop')->withData($data)->withTitle('Promotions | Antoshka')->withShop($shop);
+    }
 }
 

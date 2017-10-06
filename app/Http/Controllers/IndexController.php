@@ -14,6 +14,7 @@ class IndexController extends Controller
         if (view()->exists('index')) {
 
             $data = Product::where('status', 1)->paginate(51);
+
             $catalog = Catalog::all();
 
             return view('index')->withData($data)->withCatalog($catalog)->withTitle('promotions | home');

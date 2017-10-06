@@ -458,6 +458,7 @@ class Shops extends Model
 
             $product = new Product();
 
+
             $product->name = $name;
             $product->name_action = $name_action;
             $product->shop = $shop;

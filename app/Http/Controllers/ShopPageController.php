@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Product;
+use App\Catalog;
 
 class ShopPageController extends Controller
 {
@@ -14,8 +15,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\atb-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | ATB')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | ATB')->withShop($shop);
     }
 
     public function showSilpo()
@@ -24,8 +26,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\silpo-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | Silpo')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Silpo')->withShop($shop);
     }
 
     public function showKlass()
@@ -34,8 +37,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\klass-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | Klass')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Klass')->withShop($shop);
     }
 
     public function showPosad()
@@ -44,8 +48,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\posad-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | Posad')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Posad')->withShop($shop);
     }
 
     public function showBrusnichka()
@@ -54,8 +59,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\brusnichka-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | Brusnichka')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Brusnichka')->withShop($shop);
     }
 
     public function showVelmarket()
@@ -64,8 +70,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\velmart-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | Velmart')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Velmart')->withShop($shop);
     }
 
     public function showTavria()
@@ -74,8 +81,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\tavria-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | Таврия B')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Таврия B')->withShop($shop);
     }
 
     public function showOkwine()
@@ -84,8 +92,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\okwine-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | OKwine')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | OKwine')->withShop($shop);
     }
 
     public function showAntoshka()
@@ -94,8 +103,9 @@ class ShopPageController extends Controller
         $shopImg = '\images\antoshka-small.png';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
+        $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withTitle('Promotions | Antoshka')->withShop($shop);
+        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Antoshka')->withShop($shop);
     }
 }
 

@@ -86,4 +86,5 @@ class ParseController extends Controller
         $antoshka->AntoshkaParser();
         return redirect()->route('promotions');
     }
+
 }

@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
     <link rel="stylesheet" href="{{asset('css/slick-theme.css')}}">
     <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
     <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 </head>
@@ -66,8 +67,8 @@
             <div class="button-search">Поиск товаров</div>
             <form action="{{ route('search') }}" method="post" class="search-block">
                 {{ csrf_field() }}
-                <div class="search-block-top">
-                    <input type="text" placeholder="Введите название категории">
+                <div class="search-block-top ui-widget">
+                    <input type="text" class="input-search" name="category" placeholder="Введите название категории">
                 </div>
                 <div class="search-block-middle">
                     <div class="category">
@@ -150,6 +151,12 @@
         </section>
         <section class="main">
             <div class="container">
+                <p class="sorry">
+                    @if(!empty($text))
+                    <h1>{{ $text }}</h1>
+                    @endif
+                </p>
+                @if(!empty($data))
                 <h1>Акции и скидки супермаркетов Харькова</h1>
                 <div class="main-top clearfix">
                     <div class="right tabs"><span class="tab"><i class="fa fa-list" aria-hidden="true"></i> Список акций</span><span
@@ -159,7 +166,6 @@
                 <div class="main-content">
                     <div class="tab_item">
                         <div class="product-container">
-                            @if(!empty($data))
                                 @foreach($data as $product)
                                     <div class="product-block">
                                         <div class="product-top clearfix">
@@ -193,11 +199,9 @@
             </div>
             <div class="container">
                 <div class="paginate">
-                    @if(empty($num))
                         @if(!empty($data))
-                        {{ $data->render() }}
+                        {{ $data->links() }}
                         @endif
-                    @endif
                 </div>
             </div>
         </section>
@@ -273,6 +277,7 @@
 <script type="text/javascript" src="{{asset('js/jquery.mask.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/jquery.magnific-popup.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/select2.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/jquery-ui.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/main.js')}}"></script>
 
 </html>

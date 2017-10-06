@@ -51,9 +51,9 @@
             </div>
             <div class="container">
                 <div class="paginate">
-                    @if(!empty($data))
-                        <h1>{{ $data->render() }}</h1>
-                    @endif
+                        @if(!empty($data))
+                            {{ $data->render() }}
+                        @endif
                 </div>
             </div>
         </section>

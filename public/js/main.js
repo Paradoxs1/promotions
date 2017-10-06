@@ -200,6 +200,69 @@ $(document).ready(function(){
 
     $("select").select2();
 
+    $('body').on('click', '.ui-menu-item', function(){
+        var str = $(this).text();
+        $('.category p').each(function(){
+            var category = $(this).find('label').text();
+            if(category === str){
+                $(this).find('label').click();
+            }
+        });
+    });
+
+});
+
+$(function() {
+        var availableTags = [
+            'Бакалея',
+            'Хлебобулочные',
+            'Сладкое, дессерт',
+            'Готовые блюда',
+            'Овощи и фрукты',
+            'Молочные продукты, яйца',
+            'Мясо, рыба',
+            'Рыбные продукты, икра',
+            'Замороженные продукты',
+            'Чай, кофе',
+            'Напитки',
+            'Табак',
+            'Товары для животных',
+            'Товары для детей',
+            'Косметика гигиена',
+            'Товары для дома',
+            'Косметика и гигиена',
+            'Одежда, обувь'
+        ];
+        function split(val) {
+            return val.split( /,\s*/ );
+        }
+        function extractLast( term ) {
+            return split( term ).pop();
+        }
+
+        $(".input-search").on( "keydown", function( event ) {
+            if( event.keyCode === $.ui.keyCode.TAB &&
+                $( this ).autocomplete( "instance" ).menu.active ) {
+                event.preventDefault();
+            }
+        }).autocomplete({
+            minLength: 0,
+            source: function( request, response ) {
+                response( $.ui.autocomplete.filter(
+                    availableTags, extractLast( request.term ) ) );
+            },
+            focus: function() {
+                return false;
+            },
+            select: function( event, ui ) {
+                var terms = split( this.value );
+                terms.pop();
+                terms.push( ui.item.value );
+                terms.push( "" );
+                this.value = terms.join( ", " );
+                return false;
+            }
+        });
 });
 
 $('main .tab:last').click(function(){

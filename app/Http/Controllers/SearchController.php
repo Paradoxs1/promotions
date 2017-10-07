@@ -26,8 +26,9 @@ class SearchController extends Controller
                 $data = $data->orWhere('category_id', '=', $var);
             }
         }
-        $data = $data->paginate(2);
+        $data = $data->paginate(51);
         $catalog = Catalog::all();
+
         if($arr){
             if(empty($data)){
                 return view('index')->withText($text)->withCatalog($catalog)->withTitle('promotions');

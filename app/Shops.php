@@ -117,7 +117,7 @@ class Shops extends Model
 
                 $div = pq($div);
 
-                $desc = $div->find('h3')->text();
+                $name = $div->find('h3')->text();
 
                 $href_img = $div->find('a')->attr('href');
                 $img = 'http://silpo.ua/' . $href_img;
@@ -145,7 +145,7 @@ class Shops extends Model
                 $product->name_action = $name_action;
                 $product->shop = $shop;
                 $product->img = $img;
-                $product->description = $desc;
+                $product->name = $name;
                 if (empty($price)) {
                     $price = null;
                     $sale = 0;
@@ -560,7 +560,13 @@ class Shops extends Model
 
                 $div = pq($div);
 
-                $name = $div->find('.actions a span')->text();
+                $str = $div->find('.product-name a')->text();
+                $name = substr($str,0, strpos($str, '/'));
+                $desc = str_replace('/', '', substr($str, strpos($str, '/')));
+                if(empty($desc)){
+                    $desc = null;
+                }
+
                 $img = $div->find('img')->attr('src');
 
                 $price_sale = (float) $div->find('.special-price span')->text();
@@ -575,6 +581,7 @@ class Shops extends Model
                 $product->name_action = $name_action;
                 $product->shop = $shop;
                 $product->img = $img;
+                $product->description = $desc;
                 $product->name = $name;
                 if (empty($price)) {
                     $price = null;

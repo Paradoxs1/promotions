@@ -1,6 +1,8 @@
 /**
  * Created by Paradoxs on 31.08.2017.
  */
+
+
 $(document).ready(function(){
     $(".toggle-block").click(function(){
         $('.toggle-mnu').addClass("on");
@@ -71,7 +73,7 @@ $(document).ready(function(){
 
 
     /*********search*********/
-    var str = '', content, arr = [], num = 0;
+    var str = '', content, arr = [], num = 0, category, text;
 
     // $('.category-btn, .category>p label').click(function(){
     //     $(this).parent().find('.category-btn').toggleClass('active');
@@ -131,6 +133,47 @@ $(document).ready(function(){
     //     }
     //
     // });
+    // $('.category input[type="checkbox"]').click(function(){
+    //     if($(this).parent().next().not(':visible')){
+    //         $(this).parent().next().slideDown();
+    //         $(this).prev().addClass('active');
+    //     }
+    //     content = $(this).next().text();
+    //
+    //     if($(this).prop('checked') != false){
+    //         arr.push($(this).next().text());
+    //
+    //         for(var i = 0; i<=arr.length; i++) {
+    //
+    //             if (arr.length == 1) {
+    //                 str = content;
+    //             } else if (arr.length != 1) {
+    //                 str = '';
+    //                 for (var key in arr) {
+    //                     str += arr[key] + ', ';
+    //                 }
+    //             }
+    //             $(this).parents('.search-block').find('.search-block-top input').val(str);
+    //         }
+    //     }else if($(this).prop('checked') == false){
+    //
+    //         for(var i = 0; i<=arr.length; i++){
+    //             if(content == arr[i]){
+    //                 num = i;
+    //             }
+    //         }
+    //
+    //         delete arr[num];
+    //
+    //         str = '';
+    //         for (var key in arr) {
+    //             str += arr[key] + ', ';
+    //         }
+    //
+    //         $(this).parents('.search-block').find('.search-block-top input').val(str);
+    //     }
+    //
+    // });
 
     $('.category input[type="checkbox"]').click(function(){
 
@@ -140,14 +183,9 @@ $(document).ready(function(){
             arr.push($(this).next().text());
 
             for(var i = 0; i<=arr.length; i++) {
-
-                if (arr.length == 1) {
-                    str = content;
-                } else if (arr.length != 1) {
-                    str = '';
-                    for (var key in arr) {
-                        str += arr[key] + ', ';
-                    }
+                str = '';
+                for (var key in arr) {
+                    str += arr[key] + ', ';
                 }
                 $(this).parents('.search-block').find('.search-block-top input').val(str);
             }
@@ -171,6 +209,33 @@ $(document).ready(function(){
 
     });
 
+    $('body').on('click', '.ui-menu-item', function(){
+        text = $(this).text();
+
+        if(arr.length){
+            for(var key in arr){
+                if(arr[key] != text){
+                    arr.push(text);
+                    $('.category p').each(function(){
+                        category = $(this).find('label').text();
+                        if(category === text){
+                            $(this).find('label').click();
+                        }
+                    });
+                }
+            }
+        }else{
+            arr.push(text);
+            $('.category p').each(function(){
+                category = $(this).find('label').text();
+                if(category === text){
+                    $(this).find('label').click();
+                }
+            });
+        }
+
+    });
+
 
     $('.phone').mask('+380 99 999 99 99');
 
@@ -185,30 +250,34 @@ $(document).ready(function(){
         midClick: true
     });
 
-    var src, title, priceNew, priceOld;
+    var src, title, priceNew, priceOld, desc, path, sale;
     $('.product-img a').click(function(){
+        path = $(this).parents('.product-block');
+
         src = $(this).find('img').attr('src');
-        title = $(this).parents('.product-block').find('.product-title').text();
-        priceNew = $(this).parents('.product-block').find('.price-new').html();
-        priceOld = $(this).parents('.product-block').find('.price-old').html();
+
+        title = path.find('.product-title').text();
+        priceNew = path.find('.price-new').html();
+        priceOld = path.find('.price-old').html();
+        desc = path.find('.product-desc').html();
+        sale = path.find('.product-sale').text();
 
         $(this).parents('body').find('#popup img').attr('src', src);
         $(this).parents('body').find('#popup h4').text(title);
         $(this).parents('body').find('#popup .price-new').html(priceNew);
         $(this).parents('body').find('#popup .price-old').html(priceOld);
+        $(this).parents('body').find('#popup .product-desc').html(desc);
+
+        if(sale != ''){
+            $(this).parents('body').find('#popup .wrap').html($('<div class="product-sale"></div>'));
+            $(this).parents('body').find('#popup .product-sale').html(sale);
+        }else{
+            $(this).parents('body').find('#popup .product-sale').remove();
+        }
+
     });
 
     $("select").select2();
-
-    $('body').on('click', '.ui-menu-item', function(){
-        var str = $(this).text();
-        $('.category p').each(function(){
-            var category = $(this).find('label').text();
-            if(category === str){
-                $(this).find('label').click();
-            }
-        });
-    });
 
 });
 
@@ -216,14 +285,14 @@ $(function() {
         var availableTags = [
             'Бакалея',
             'Хлебобулочные',
-            'Сладкое, дессерт',
+            'Сладкое и дессерт',
             'Готовые блюда',
             'Овощи и фрукты',
-            'Молочные продукты, яйца',
-            'Мясо, рыба',
-            'Рыбные продукты, икра',
+            'Молочные продукты и яйца',
+            'Мясо и рыба',
+            'Рыбные продукты и икра',
             'Замороженные продукты',
-            'Чай, кофе',
+            'Чай и кофе',
             'Напитки',
             'Табак',
             'Товары для животных',
@@ -231,7 +300,7 @@ $(function() {
             'Косметика гигиена',
             'Товары для дома',
             'Косметика и гигиена',
-            'Одежда, обувь'
+            'Одежда и обувь'
         ];
         function split(val) {
             return val.split( /,\s*/ );

@@ -18,6 +18,7 @@ class SearchController extends Controller
 
         $data = Product::where('status', 1);
         $flag = true;
+
         foreach($arr as $var){
             if($flag){
                 $data =  $data->where('category_id', $var);
@@ -26,14 +27,16 @@ class SearchController extends Controller
                 $data = $data->orWhere('category_id', '=', $var);
             }
         }
-        $data = $data->paginate(51);
+        $data = $data->get();
         $catalog = Catalog::all();
+        $var = true;
 
         if($arr){
-            if(empty($data)){
+            if(empty($data[0])){
                 return view('index')->withText($text)->withCatalog($catalog)->withTitle('promotions');
             }else{
-                return view('index')->withData($data)->withCatalog($catalog)->withTitle('promotions');
+                $var = false;
+                return view('index')->withData($data)->withCatalog($catalog)->withVar($var)->withTitle('promotions');
             }
         }else{
             return view('index')->withText($text)->withCatalog($catalog)->withTitle('promotions');

@@ -111,7 +111,7 @@
         </section>
         <section class="main">
             <div class="container">
-                @if(!empty($data))
+                @if(!empty($data[0]))
                 <h1>Акции и скидки супермаркетов Харькова</h1>
                 <div class="main-top clearfix">
                     <div class="right tabs"><span class="tab"><i class="fa fa-list" aria-hidden="true"></i> Список акций</span><span
@@ -162,14 +162,14 @@
                     </div>
                 </div>
                 @else
-                    @if(!empty($text))
+                    @if(!empty($flag))
                     <h1>{{ $text }}</h1>
                     @endif
                 @endif
             </div>
             <div class="container">
                 <div class="paginate">
-                    @if(!empty($var))
+                    @if(!empty($flag))
                         @if(!empty($data))
                         {{ $data->links() }}
                         @endif
@@ -230,10 +230,8 @@
             <div class="tab_item">
                 <h4></h4>
                 <img src="" alt="">
-                <div class="product-desc"></div>
                 <div class="price-new"></div>
                 <div class="price-old"></div>
-                <div class="wrap"></div>
             </div>
             <div class="tab_item">
                 <div id="popup-map" class="popup-map"></div>

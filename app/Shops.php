@@ -41,13 +41,17 @@ class Shops extends Model
                 $img = 'http://www.atbmarket.com/' . $href_img;
 
                 $price = $li->find('.promo_old_price')->text();
+                $price = (float)$price;
+                $price = number_format($price, 2, '.', '');
                 $li->find('.promo_price .currency')->remove();
                 $price_cent = $li->find('.promo_price span')->html();
                 $li->find('.promo_price span')->remove();
                 $price_dollar = $li->find('.promo_price')->html();
                 $price_sale = $price_dollar + $price_cent / 100;
+                $price_sale = (float)$price_sale;
+                $price_sale = number_format($price_sale, 2, '.', '');
 
-                if (!empty($price_sale) && !empty($price)) {
+                if (!empty($price_sale) && !empty($price) && $price != 0) {
                     $sale = ($price - $price_sale) / $price * 100;
                     $sale = ceil($sale);
                 }
@@ -59,7 +63,7 @@ class Shops extends Model
                 $product->shop = $shop;
                 $product->img = $img;
                 $product->description = $desc;
-                if (empty($price)) {
+                if (empty($price) || $price == 0) {
                     $price = null;
                     $sale = 0;
                 }
@@ -122,24 +126,33 @@ class Shops extends Model
                 $href_img = $div->find('a')->attr('href');
                 $img = 'http://silpo.ua/' . $href_img;
 
-                $price_cent = $div->find('.pr .kop, .old_price sup, ')->text();
+                $price_cent = $div->find('.pr .kop')->text(); //, .old_price sup,
                 $div->find('.old_price sup')->remove();
                 $price_dollar = $div->find('.pr .hrn, .old_price .hrn')->text();
 
-                if (empty($price_dollar) || empty($price_cent)) {
+                if (empty($price_dollar)) {
                     $price_dollar = 0;
+                }
+
+                if (empty($price_cent)) {
                     $price_cent = 0;
                 }
+
                 $price = $price_dollar + $price_cent / 100;
+                $price = (float)$price;
+                $price = number_format($price, 2, '.', '');
 
                 $price_dollar_sale = $div->find('.price_2014_new span.hrn, .new_price .hrn, .price-hot-new .hrn, .price-child-new .hrn, .ownimp_new .hrn')->text();
                 $price_cent_sale = $div->find('.price_2014_new span.kop, .new_price .kop, .price-hot-new .kop, .price-child-new .kop, .ownimp_new .hrn')->text();
                 $price_sale = $price_dollar_sale + $price_cent_sale / 100;
+                $price_sale = (float)$price_sale;
+                $price_sale = number_format($price_sale, 2, '.', '');
 
-                if (!empty($price_sale) && !empty($price)) {
+                if (!empty($price_sale) && !empty($price) && $price != 0) {
                     $sale = ($price - $price_sale) / $price * 100;
                     $sale = ceil($sale);
                 }
+
 
                 $product = new Product();
                 $product->name_action = $name_action;
@@ -204,11 +217,16 @@ class Shops extends Model
             $li->find('.new_price>*')->remove();
             $price_new = $li->find('.new_price')->text();
             $price_sale = $price_new + $price_new_cop / 100;
+            $price_sale = (float)$price_sale;
+            $price_sale = number_format($price_sale, 2, '.', '');
 
-            if (!empty($price_sale) && !empty($price)) {
+            if (!empty($price_sale) && !empty($price) && $price != 0) {
                 $sale = ($price - $price_sale) / $price * 100;
                 $sale = ceil($sale);
             }
+            $price = (float)$price;
+            $price = number_format($price, 2, '.', '');
+
 
             $product = new Product();
 
@@ -333,8 +351,12 @@ class Shops extends Model
             $price_old_cop = $li->find('.price__old .coins')->text();
             $li->find('.price__old .coins')->remove();
             $price_old = $li->find('.price__old')->text();
-            if (empty($price_old) || empty($price_old_cop)) {
+
+            if (empty($price_old)) {
                 $price_old = 0;
+            }
+
+            if (empty($price_old_cop)) {
                 $price_old_cop = 0;
             }
             $price = $price_old + $price_old_cop / 100;
@@ -345,10 +367,15 @@ class Shops extends Model
             $price_sale = $price_new + $price_new_cop / 100;
 
 
-            if (!empty($price_sale) && !empty($price)) {
+            $price_sale = (float)$price_sale;
+            $price_sale = number_format($price_sale, 2, '.', '');
+
+            if (!empty($price_sale) && !empty($price) && $price != 0) {
                 $sale = ($price - $price_sale) / $price * 100;
                 $sale = ceil($sale);
             }
+            $price = (float)$price;
+            $price = number_format($price, 2, '.', '');
 
             $product = new Product();
 
@@ -433,28 +460,33 @@ class Shops extends Model
             $price = $li->find('.price span')->text();
             $li->find('.price span')->remove();
             $pos = strrpos($price, ",");
-            $price_new = (int) substr($price, 0, $pos);
+            $price_new = (int)substr($price, 0, $pos);
             $price_new_cop = stristr($price, ',');
             $pos = strrpos($price_new_cop, ' ');
-            $price_new_cop = (int) substr($price_new_cop, 1, $pos);
+            $price_new_cop = (int)substr($price_new_cop, 1, $pos);
             $price_sale = $price_new + $price_new_cop / 100;
 
             $price = $li->find('.price')->text();
             $pos = strrpos($price, ",");
-            $price_old = (int) substr($price, 0, $pos);
+            $price_old = (int)substr($price, 0, $pos);
             $price_old_cop = stristr($price, ',');
             $pos = strrpos($price_old_cop, ' ');
-            $price_old_cop = (int) substr($price_old_cop, 1, $pos);
+            $price_old_cop = (int)substr($price_old_cop, 1, $pos);
             if (empty($price_old) || empty($price_old_cop)) {
                 $price_old = 0;
                 $price_old_cop = 0;
             }
             $price = $price_old + $price_old_cop / 100;
 
-            if (!empty($price_sale) && !empty($price)) {
+            $price_sale = (float)$price_sale;
+            $price_sale = number_format($price_sale, 2, '.', '');
+
+            if (!empty($price_sale) && !empty($price) && $price != 0) {
                 $sale = ($price - $price_sale) / $price * 100;
                 $sale = ceil($sale);
             }
+            $price = (float)$price;
+            $price = number_format($price, 2, '.', '');
 
             $product = new Product();
 
@@ -497,8 +529,8 @@ class Shops extends Model
             $li = pq($li);
 
             $name = trim($li->find('td:first-child')->text());
-            $price_sale = (float) $li->find('td:last-child')->text();
-            $price = (float) $li->find('td:nth-child(2)')->text();
+            $price_sale = (float)$li->find('td:last-child')->text();
+            $price = (float)$li->find('td:nth-child(2)')->text();
 
             if (!empty($price_sale) && !empty($price)) {
                 $sale = ($price - $price_sale) / $price * 100;
@@ -561,21 +593,27 @@ class Shops extends Model
                 $div = pq($div);
 
                 $str = $div->find('.product-name a')->text();
-                $name = substr($str,0, strpos($str, '/'));
+                $name = substr($str, 0, strpos($str, '/'));
                 $desc = str_replace('/', '', substr($str, strpos($str, '/')));
-                if(empty($desc)){
+                if (empty($desc)) {
                     $desc = null;
                 }
 
                 $img = $div->find('img')->attr('src');
 
-                $price_sale = (float) $div->find('.special-price span')->text();
-                $price = (float) $div->find('.old-price span')->text();
+                $price_sale = (float)$div->find('.special-price span')->text();
+                $price = (float)$div->find('.old-price span')->text();
 
-                if (!empty($price_sale) && !empty($price)) {
+                $price_sale = (float)$price_sale;
+                $price_sale = number_format($price_sale, 2, '.', '');
+
+                if (!empty($price_sale) && !empty($price) && $price != 0) {
                     $sale = ($price - $price_sale) / $price * 100;
                     $sale = ceil($sale);
                 }
+
+                $price = (float)$price;
+                $price = number_format($price, 2, '.', '');
 
                 $product = new Product();
                 $product->name_action = $name_action;
@@ -630,15 +668,20 @@ class Shops extends Model
 
             $li->find('.special-price .price span')->remove();
             $price_sale = trim($li->find('.special-price .price')->html());
-            $price_sale = str_replace(",",'.',$price_sale);
-            $price_sale = preg_replace("/[^x\d|*\.]/","",$price_sale);
-            $price = str_replace(",",'.', str_replace('грн.', '', trim($li->find('.old-price .price')->text())));
-            $price = preg_replace("/[^x\d|*\.]/","",$price);
+            $price_sale = str_replace(",", '.', $price_sale);
+            $price_sale = preg_replace("/[^x\d|*\.]/", "", $price_sale);
+            $price = str_replace(",", '.', str_replace('грн.', '', trim($li->find('.old-price .price')->text())));
+            $price = preg_replace("/[^x\d|*\.]/", "", $price);
 
-            if (!empty($price_sale) && !empty($price)) {
+            $price_sale = (float)$price_sale;
+            $price_sale = number_format($price_sale, 2, '.', '');
+
+            if (!empty($price_sale) && !empty($price) && $price != 0) {
                 $sale = ($price - $price_sale) / $price * 100;
                 $sale = ceil($sale);
             }
+            $price = (float)$price;
+            $price = number_format($price, 2, '.', '');
 
             $product = new Product();
 

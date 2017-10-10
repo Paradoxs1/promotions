@@ -14,13 +14,14 @@ class CreateShopTable extends Migration
     public function up()
     {
         Schema::create('shops', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('category_id');
-            $table->integer('location_id');
-            $table->string('name');
-            $table->string('img');
+            $table->increments('id')->nullable()->default(NULL);
+            $table->integer('category_id')->nullable()->default(NULL);
+            $table->integer('location_id')->nullable()->default(NULL);
+            $table->string('name')->nullable()->default(NULL);
+            $table->string('method')->nullable()->default(NULL);
+            $table->string('img')->nullable()->default(NULL);
             $table->unsignedTinyInteger('status')->default('1');
-            $table->text('description');
+            $table->text('description')->nullable()->default(NULL);;
             $table->timestamps();
         });
     }

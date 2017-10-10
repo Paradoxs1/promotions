@@ -11,6 +11,9 @@ use DB;
 class Shops extends Model
 {
 
+    protected $table = 'shops';
+    protected $primaryKey = 'id';
+
     public function AtbParser()
     {
 
@@ -56,6 +59,7 @@ class Shops extends Model
 
                 $product->name = $name;
                 $product->name_action = $name_action;
+                $product->shop_id = "1";
                 $product->shop = $shop;
                 $product->img = $img;
                 $product->description = $desc;
@@ -143,6 +147,7 @@ class Shops extends Model
 
                 $product = new Product();
                 $product->name_action = $name_action;
+                $product->shop_id = "2";
                 $product->shop = $shop;
                 $product->img = $img;
                 $product->name = $name;
@@ -214,6 +219,7 @@ class Shops extends Model
 
             $product->name = $name;
             $product->name_action = $name_action;
+            $product->shop_id = "3";
             $product->shop = $shop;
             $product->img = $img;
             $product->price = $price;
@@ -252,6 +258,7 @@ class Shops extends Model
             $product = new Product();
 
             $product->name_action = $name_action;
+            $product->shop_id = "3";
             $product->shop = $shop;
             $product->img = $href_img;
 
@@ -292,6 +299,7 @@ class Shops extends Model
                 $product = new Product();
 
                 $product->name_action = $name_action;
+                $product->shop_id = "4";
                 $product->shop = $shop;
                 $product->img = $img;
 
@@ -354,6 +362,7 @@ class Shops extends Model
 
             $product->name = $name;
             $product->name_action = $name_action;
+            $product->shop_id = "5";
             $product->shop = $shop;
             $product->img = $img;
             $product->description = $desc;
@@ -397,6 +406,7 @@ class Shops extends Model
             $product = new Product();
 
             $product->name_action = $name_action;
+            $product->shop_id = "6";
             $product->shop = $shop;
             $product->img = $img;
 
@@ -461,6 +471,7 @@ class Shops extends Model
 
             $product->name = $name;
             $product->name_action = $name_action;
+            $product->shop_id = "7";
             $product->shop = $shop;
             $product->img = $img;
             if (empty($price)) {
@@ -509,6 +520,7 @@ class Shops extends Model
 
             $product->name = $name;
             $product->name_action = $name_action;
+            $product->shop_id = "7";
             $product->shop = $shop;
             $product->img = 'http://promotions/images/product.png';
             if (empty($price)) {
@@ -579,6 +591,7 @@ class Shops extends Model
 
                 $product = new Product();
                 $product->name_action = $name_action;
+                $product->shop_id = "8";
                 $product->shop = $shop;
                 $product->img = $img;
                 $product->description = $desc;
@@ -645,6 +658,7 @@ class Shops extends Model
             $product->name = $name;
             $product->description = $desc;
             $product->name_action = $name_action;
+            $product->shop_id = "9";
             $product->shop = $shop;
             $product->category_id = '14';
             $product->img = $img;

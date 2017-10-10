@@ -72,6 +72,11 @@ $(document).ready(function(){
     }).eq(0).addClass("active");
 
 
+    $('.panel-btn .fa').click(function(){
+        $(this).parent().toggleClass('active');
+        $('.category-product tbody').slideToggle(1000);
+    });
+
     /*********search*********/
     var str = '', content, arr = [], num = 0, category, text;
 
@@ -332,6 +337,9 @@ $(function() {
                 return false;
             }
         });
+
+
+
 });
 
 $('main .tab:last').click(function(){
@@ -339,7 +347,35 @@ $('main .tab:last').click(function(){
     function initMap(){
         map = new google.maps.Map(document.getElementById('map'), {
             center: {lat: 49.988086, lng: 36.232516},
-            zoom: 14
+            zoom: 12
+        });
+
+        var iconBase = 'http://promotions/';
+        var icons = {
+            atb: {
+                icon: iconBase + '/images/atb-map.jpg'
+            },
+            silpo: {
+                icon: iconBase + '/images/silpo-map.jpg'
+            }
+        };
+
+        var features = [
+            {
+                position: new google.maps.LatLng(50.018822, 36.226844),
+                type: 'atb'
+            }, {
+                position: new google.maps.LatLng(50.026954, 36.220752),
+                type: 'silpo'
+            }
+        ];
+
+        features.forEach(function(feature) {
+            var marker = new google.maps.Marker({
+                position: feature.position,
+                icon: icons[feature.type].icon,
+                map: map
+            });
         });
     }
     initMap();
@@ -347,11 +383,61 @@ $('main .tab:last').click(function(){
 
 $('.white-popup .tab:last').click(function(){
     var map;
-    function initMap(){
+    function initMap() {
+
         map = new google.maps.Map(document.getElementById('popup-map'), {
             center: {lat: 49.988086, lng: 36.232516},
             zoom: 14
         });
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(position) {
+
+                var pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+
+                map.setCenter(pos);
+
+                var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map,
+                    title: 'Your location'
+                });
+            });
+
+        }
+
+        var iconBase = 'http://promotions/';
+        var icons = {
+            atb: {
+                icon: iconBase + '/images/atb-map.jpg'
+            },
+            silpo: {
+                icon: iconBase + '/images/silpo-map.jpg'
+            }
+        };
+
+        var features = [
+            {
+                position: new google.maps.LatLng(50.018822, 36.226844),
+                type: 'atb'
+            }, {
+                position: new google.maps.LatLng(50.026954, 36.220752),
+                type: 'silpo'
+            }
+        ];
+
+
+        features.forEach(function (feature) {
+            var marker = new google.maps.Marker({
+                position: feature.position,
+                icon: icons[feature.type].icon,
+                map: map
+            });
+        });
     }
+
     initMap();
 });

@@ -1050,6 +1050,66 @@ footer p{
     border-bottom: 1px solid #d3e0e9;
     line-height: 40px;
 }
+.shops-parser{
+    padding: 30px;
+}
+.shops-parser h1{
+    margin-bottom: 20px;
+    padding-top: 10px;
+    border-bottom: 1px solid #ccc;
+}
+.shops-parser .submit{
+    float: none;
+    max-width: 300px;
+    display: table;
+    margin: 40px auto 0;
+    height: 50px;
+    font-size: 24px;
+    line-height: 44px;
+}
+.shops-inner p{
+    float: left;
+    width: 33%;
+}
+.shops-inner input{
+    position: relative;
+    top: -4px;
+    display: inline-block;
+    vertical-align: middle;
+    width: 15px;
+    height: 15px;
+    line-height: 20px;
+}
+.shops-inner label{
+    font-family: 'Arial';
+    color: #666;
+    font-size: 20px;
+    line-height: 30px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+.panel-heading .panel-btn{
+    margin-right: 10px;
+}
+.panel-heading .panel-btn i{
+    font-size: 20px;
+    cursor: pointer;
+
+    -webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
+    transition: all .3s linear;
+}
+.panel-heading .panel-btn i:hover{
+    color: #000;
+}
+.panel-heading .panel-btn.active .fa-arrow-up{
+    display: inline-block;
+}
+.panel-heading .panel-btn.active .fa-arrow-down, .panel-heading .panel-btn .fa-arrow-up{
+    display: none;
+}
 
 /*****************MEDIA*********************/
 

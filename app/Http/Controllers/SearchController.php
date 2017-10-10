@@ -12,9 +12,7 @@ class SearchController extends Controller
     public function search(Request $request)
     {
         $text = 'Sorry, but nothing found.';
-        $input = $request->except('_token', 'category');
-
-        $arr = array_keys($input);
+        $arr = array_keys($request->except('_token', 'category'));
 
         $data = Product::where('status', 1);
         $flag = true;

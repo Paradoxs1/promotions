@@ -23,6 +23,9 @@ time, mark, audio, video {
     -o-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
 }
+body, html{
+    height: 100%;
+}
 body {
     line-height: 1;
     font: normal 16px/18px 'Raleway';
@@ -382,6 +385,8 @@ header .close:hover{
 
 main{
     margin-top: 73px;
+    min-height: 100%;
+    padding-bottom: 100px;
 }
 .slider-title{
     padding: 50px 0;
@@ -614,6 +619,8 @@ main .tab_item{
 /*****************FOOTER********************/
 
 footer{
+    height: 100px;
+    margin-top: -100px;
     padding: 20px 0;
     background-image: linear-gradient(to top, #3c3c3c 0%, #222 100%);
     text-align: center;
@@ -857,9 +864,13 @@ footer p{
 
 .table-img img{
     max-width: 300px;
+    width: 100%;
 }
 .category-product{
     width: 100%;
+}
+.category-product tbody tr:nth-of-type(even) {
+    background: #f4f4f4;
 }
 .table-price{
     font-size: 20px;
@@ -1110,6 +1121,9 @@ footer p{
 .panel-heading .panel-btn.active .fa-arrow-down, .panel-heading .panel-btn .fa-arrow-up{
     display: none;
 }
+#app .container{
+    padding: 0 15px;
+}
 
 /*****************MEDIA*********************/
 
@@ -1168,6 +1182,7 @@ footer p{
     }
     .head-block ul li a{
         color: #444;
+        display: block;
     }
     .head-block ul li{
         display: block;
@@ -1189,12 +1204,52 @@ footer p{
         margin-left: 0;
     }
 }
+@media only screen and (max-width: 850px){
+    .category-product table, .category-product thead, .category-product tbody, .category-product th, .category-product td, .category-product tr {
+        display: block;
+    }
+    .category-product thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+    .category-product tr { border: 1px solid #ccc; }
+    .category-product.table td {
+        border: none;
+        border-bottom: 1px solid #ccc;
+        position: relative;
+        padding-left: 50%;
+        text-align: center;
+    }
+    .category-product td:before {
+        text-align: left;
+        position: absolute;
+        top: 50%;
+        margin-top: -10px;
+        left: 10px;
+        font-size: 20px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+    .category-product td:nth-child(3), .category-product th:nth-child(3){
+        width: auto;
+    }
+    .category-product td:nth-of-type(1):before { content: "Продукт"; }
+    .category-product td:nth-of-type(2):before { content: "Магазин"; }
+    .category-product td:nth-of-type(3):before { content: "Название"; }
+    .category-product td:nth-of-type(4):before { content: "Цена (грн)"; }
+    .category-product td:nth-of-type(5):before { content: "Категория"; }
+}
 @media only screen and (max-width: 700px){
     .search{
         width: 250px;
     }
     .search-block{
         width: 300px;
+    }
+    footer{
+        height: 110px;
     }
 }
 @media only screen and (max-width: 600px){
@@ -1216,6 +1271,15 @@ footer p{
     header .close{
         color: #fff;
     }
+    footer{
+        height: 180px;
+    }
+    .category-product.table td{
+        padding-left: 30%;
+    }
+    .shops-inner p{
+        width: 50%;
+    }
 }
 @media only screen and (max-width: 500px){
     h1{
@@ -1234,6 +1298,12 @@ footer p{
     }
 }
 @media only screen and (max-width: 400px){
+    .category-product td:before{
+        font-size: 16px;
+    }
+    .category-product select{
+        max-width: 150px;
+    }
     .slick-prev, .slick-next{
         top: auto;
         bottom: -70px;
@@ -1259,6 +1329,12 @@ footer p{
     h1{
         font-size: 30px;
         line-height: 30px;
+    }
+    footer{
+        height: 190px;
+    }
+    .shops-inner p{
+        width: 100%;
     }
 }
 

@@ -13,99 +13,108 @@ class ShopPageController extends Controller
     {
         $shop = 'АТБ';
         $shopImg = '\images\atb-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | ATB')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | ATB')->withShop($shop);
     }
 
     public function showSilpo()
     {
         $shop = 'Сильпо';
         $shopImg = '\images\silpo-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Silpo')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | Silpo')->withShop($shop);
     }
 
     public function showKlass()
     {
         $shop = 'Класс';
         $shopImg = '\images\klass-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Klass')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | Klass')->withShop($shop);
     }
 
     public function showPosad()
     {
         $shop = 'Посад';
         $shopImg = '\images\posad-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Posad')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | Posad')->withShop($shop);
     }
 
     public function showBrusnichka()
     {
         $shop = 'Брусничка';
         $shopImg = '\images\brusnichka-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Brusnichka')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | Brusnichka')->withShop($shop);
     }
 
     public function showVelmarket()
     {
         $shop = 'Velmarket';
         $shopImg = '\images\velmart-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Velmart')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | Velmart')->withShop($shop);
     }
 
     public function showTavria()
     {
         $shop = 'Таврия B';
         $shopImg = '\images\tavria-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Таврия B')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | Таврия B')->withShop($shop);
     }
 
     public function showOkwine()
     {
         $shop = 'OKwine';
         $shopImg = '\images\okwine-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | OKwine')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | OKwine')->withShop($shop);
     }
 
     public function showAntoshka()
     {
         $shop = 'Antoshka';
         $shopImg = '\images\antoshka-small.png';
+        $text = 'Sorry, but nothing found.';
 
         $data = Product::where('status', 1)->where('shop', $shopImg)->paginate(51);
         $catalog = Catalog::all();
 
-        return view('shop')->withData($data)->withCatalog($catalog)->withTitle('Promotions | Antoshka')->withShop($shop);
+        return view('shop')->withData($data)->withText($text)->withCatalog($catalog)->withTitle('Promotions | Antoshka')->withShop($shop);
     }
 }
 

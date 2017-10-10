@@ -49,7 +49,7 @@
                                 <td class="table-img"><img src="{{ $product->img }}" alt=""></td>
                                 <td class="table-shop"><img src="{{ $product->shop }}" alt=""></td>
                                 <td>{{ $product->name }} <input type="hidden" name="id{{ $product->id}}" value="{{ $product->id}}"></td>
-                                <td class="table-price">{{ $product->price_sale }}</td>
+                                <td class="table-price">{{ $product->price_sale }} грн</td>
                                 <td>
                                     <select class="selectpicker" name="category{{ $product->id}}">
                                         <option value="0">---</option>

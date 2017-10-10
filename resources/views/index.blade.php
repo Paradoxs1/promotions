@@ -46,17 +46,15 @@
                 </ul>
                 <h3>Выберите супермаркет</h3>
                 <div class="market-block">
-                    <a href="#"><img src="{{asset('images/atb.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/brusnichka.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/digma.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/fozzy.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/karavan.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/klass.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/metro.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/posad.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/rost.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/silpo.png')}}" alt=""></a>
-                    <a href="#"><img src="{{asset('images/vostorg.png')}}" alt=""></a>
+                    <a href="{{ route('atb') }}"><img src="{{asset('images/atb-small.png')}}" alt=""></a>
+                    <a href="{{ route('brusnichka') }}"><img src="{{asset('images/brusnichka-small.png')}}" alt=""></a>
+                    <a href="{{ route('antoshka') }}"><img src="{{asset('images/antoshka-small.png')}}" alt=""></a>
+                    <a href="{{ route('tavria') }}"><img src="{{asset('images/tavria-small.png')}}" alt=""></a>
+                    <a href="{{ route('klass') }}"><img src="{{asset('images/klass-small.png')}}" alt=""></a>
+                    <a href="{{ route('velmarket') }}"><img src="{{asset('images/velmart-small.png')}}" alt=""></a>
+                    <a href="{{ route('posad') }}"><img src="{{asset('images/posad-small.png')}}" alt=""></a>
+                    <a href="{{ route('silpo') }}"><img src="{{asset('images/silpo-small.png')}}" alt=""></a>
+                    <a href="{{ route('okwine') }}"><img src="{{asset('images/okwine-small.png')}}" alt=""></a>
                 </div>
             </div>
         </div>

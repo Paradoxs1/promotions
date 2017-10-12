@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="ru">
 <head>
@@ -9,21 +8,27 @@
     <meta name="description" content="">
     <meta name="keywords" content="">
 
-<link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
-<link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,900" rel="stylesheet">
+    <link rel="icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
+    <link rel="shortcut icon" href="{{asset('favicon.ico')}}" type="image/x-icon"/>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,700,900" rel="stylesheet">
 
-<!-- Styles -->
-<link rel="stylesheet" href="{{asset('css/slick.css')}}">
-<link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
-<link rel="stylesheet" href="{{asset('css/slick-theme.css')}}">
-<link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
-<link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
-<link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <!-- Styles -->
+    <link rel="stylesheet" href="{{asset('css/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slick-theme.css')}}">
+    <link rel="stylesheet" href="{{asset('css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/jquery-ui.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
 
 </head>
 <body>
 <h1>Hello</h1>
+
+<p>Имя : {{ $name }}</p>
+<p>Тел. : {{ $phone }}</p>
+<p>Email : {{ $email }}</p>
+<p>Комментарий : {{ $comment }}</p>
+
 </body>
 </html>

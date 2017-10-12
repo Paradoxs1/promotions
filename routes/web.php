@@ -19,6 +19,7 @@ Route::get('/parse', 'ParseController@show')->name('parse');
 
 Route::get('/contact', 'ContactController@show')->name('contact');
 Route::match(['get', 'post'], '/contact/formHandler', 'ContactController@formHandler')->name('formHandler');
+Route::match(['get', 'post'], 'sendMail', 'MailSetting@sendForm')->name('sendForm');
 Route::match(['get', 'post'], '/parse/parseAtb', 'ParseController@parseAtb')->name('parseAtb');
 Route::match(['get', 'post'], '/parse/parseSilpo', 'ParseController@parseSilpo')->name('parseSilpo');
 Route::match(['get', 'post'], '/parse/parseKlass', 'ParseController@parseKlass')->name('parseKlass');

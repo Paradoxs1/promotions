@@ -40,7 +40,6 @@
             <div class="head-block-inner">
                 <ul>
                     <li><a href="{{ route('promotions') }}">Главная</a></li>
-                    <li><a href="{{ route('parse') }}">Парсить</a></li>
                     <li><a href="{{ route('about') }}">О нас</a></li>
                     <li><a href="{{ route('contact') }}">Связаться с нами</a></li>
                 </ul>

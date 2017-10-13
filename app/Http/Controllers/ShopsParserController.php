@@ -6,29 +6,27 @@ use Illuminate\Http\Request;
 use App\Shops;
 use App\Product;
 use App\Catalog;
+use App\Parser\ShopsParser;
 
 class ShopsParserController extends Controller
 {
+    /**
+     * @param Request $request
+     */
     public function shopsParser(Request $request)
     {
         $input = array_keys($request->except('_token'));
 
         if (!empty($input)) {
+            $shop = new ShopsParser();
+
             foreach ($input as $item) {
                 $shops[] = Shops::where('id', $item)->pluck('method');
             }
 
-            foreach ($shops as $shop) {
-                $arr[] = $shop[0];
-            }
-
-            $arr = implode(',', $arr);
-            $shops = explode(',', $arr);
-
-            foreach ($shops as $shop) {
-                $shop = trim($shop);
-                $obj = new Shops();
-                $obj->$shop();
+            foreach ($shops as $item) {
+                $func = $item[0];
+                $shop->$func();
             }
         }
 

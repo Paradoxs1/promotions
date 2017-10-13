@@ -21,12 +21,12 @@ class ShopsSeeder extends Seeder
                 [
                     'name'=>"Сильпо",
                     'img'=>"/images/silpo-small.png",
-                    'method'=>"Silpo"
+                    'method'=>"SilpoParser"
                 ],
                 [
                     'name'=>"Класс",
                     'img'=>"/images/klass-small.png",
-                    'method'=>"KlassTen, KlassTheme"
+                    'method'=>"KlassParser"
                 ],
                 [
                     'name'=>"Посад",
@@ -46,12 +46,12 @@ class ShopsSeeder extends Seeder
                 [
                     'name'=>"Таврия B",
                     'img'=>"/images/tavria-small.png",
-                    'method'=>"TavriaParser, TavriaParserSale"
+                    'method'=>"TavriaParser"
                 ],
                 [
                     'name'=>"Okwine",
                     'img'=>"/images/okwine-small.png",
-                    'method'=>"Okwine"
+                    'method'=>"OkwineParser"
                 ],
                 [
                     'name'=>"Антошка",

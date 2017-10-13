@@ -1,13 +1,14 @@
 <?php
 
-namespace App;
+namespace App\Parser;
 
 use Illuminate\Database\Eloquent\Model;
 use phpQuery;
 use App\Product;
 
-class Parser extends Model
+abstract class Parser extends Model
 {
+
     protected function getContentUrl($url)
     {
         $ch = curl_init($url);
@@ -18,18 +19,18 @@ class Parser extends Model
         return $res;
     }
 
-    public function parser($url)
+    protected function parserShops($url)
     {
         $html = $this->getContentUrl($url);
         return $doc = PhpQuery::newDocument($html);
     }
 
-
-    public function statusProductOff($name_action)
+    protected function statusProductOff($name_action)
     {
         $product = Product::where('name_action', $name_action)->update(['status' => 0]);
         return $product;
     }
 
+    abstract protected function parser();
 
 }

@@ -10,7 +10,6 @@ class Product extends Model
     protected $table = 'products';
     protected $primaryKey = 'id';
 
-
     public function category()
     {
         return $this->belongsTo('App\Category');
@@ -19,11 +18,10 @@ class Product extends Model
     public static function getProductsBySale()
     {
 
-        $products = Product:: where('status', 1)->orderBy('sale', 'desc')->where('img', '!=', 'http://promotions/images/product.png')->paginate(51);
+        $products = Product::where('status', 1)->orderBy('sale', 'desc')->where('img', '!=', 'http://promotions/images/product.png')->paginate(51);
 
         return $products;
 
     }
-
 
 }

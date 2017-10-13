@@ -14,20 +14,7 @@
 
 Route::get('/', 'IndexController@show')->name('promotions');
 Route::get('/about', 'AboutController@show')->name('about');
-Route::get('/product', 'ProductController@show')->name('product');
-Route::get('/parse', 'ParseController@show')->name('parse');
-
 Route::match(['get', 'post'], '/contact', 'ContactController@show')->name('contact');
-Route::match(['get', 'post'], '/parse/parseAtb', 'ParseController@parseAtb')->name('parseAtb');
-Route::match(['get', 'post'], '/parse/parseSilpo', 'ParseController@parseSilpo')->name('parseSilpo');
-Route::match(['get', 'post'], '/parse/parseKlass', 'ParseController@parseKlass')->name('parseKlass');
-Route::match(['get', 'post'], '/parse/parsePosad', 'ParseController@parsePosad')->name('parsePosad');
-Route::match(['get', 'post'], '/parse/parseBrusnichka', 'ParseController@parseBrusnichka')->name('parseBrusnichka');
-Route::match(['get', 'post'], '/parse/parseVelmarket', 'ParseController@parseVelmarket')->name('parseVelmarket');
-Route::match(['get', 'post'], '/parse/parseTavria', 'ParseController@parseTavria')->name('parseTavria');
-Route::match(['get', 'post'], '/parse/parseOkwine', 'ParseController@parseOkwine')->name('parseOkwine');
-Route::match(['get', 'post'], '/parse/parseAntoshka', 'ParseController@parseAntoshka')->name('parseAntoshka');
-
 
 Auth::routes();
 

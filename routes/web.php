@@ -14,7 +14,10 @@
 
 Route::get('/', 'IndexController@show')->name('promotions');
 Route::get('/about', 'AboutController@show')->name('about');
-Route::match(['get', 'post'], '/contact', 'ContactController@show')->name('contact');
+
+Route::get('/contact', 'ContactController@show')->name('contact');
+Route::match(['get', 'post'], '/contact/formHandler', 'ContactController@formHandler')->name('formHandler');
+Route::match(['get', 'post'], 'sendMail', 'MailSetting@sendForm')->name('sendForm');
 
 Auth::routes();
 

@@ -2,10 +2,12 @@
 
 namespace App\Console;
 
+use DB;
 use App\Parser\ShopsParser;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use App\Http\Controllers\ShopsParserController;
+use Illuminate\Foundation\Inspiring;
+
 
 class Kernel extends ConsoleKernel
 {
@@ -15,7 +17,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        //
+//
+        Commands\Parser::class
     ];
 
     /**
@@ -28,7 +31,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {
             ShopsParser::cronParser();
-        })->everyTenMinutes();
+        });
     }
 
     /**

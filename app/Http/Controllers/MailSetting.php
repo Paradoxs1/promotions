@@ -31,4 +31,8 @@ class MailSetting extends Controller
             return redirect()->route('promotions')->withTitle('promotions');
         }
     }
+
+    public function sendCronStatus(){
+        Mail::to('mdn81@ukr.net')->send(new MailClass($name, $email, $phone, $comment));
+    }
 }

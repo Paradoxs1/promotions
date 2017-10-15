@@ -7,6 +7,7 @@ use App\Shops;
 use App\Product;
 use App\Catalog;
 use App\Parser\ShopsParser;
+use App\Http\Controllers\MailSetting;
 
 class ShopsParserController extends Controller
 {
@@ -34,5 +35,23 @@ class ShopsParserController extends Controller
         $catalog = Catalog::all();
         $shops = Shops::all();
         return view('home')->withData($data)->withCatalog($catalog)->withShops($shops);
+    }
+
+    public static function cronParser()
+    {
+        $shop = new ShopsParser();
+        $atb = $shop->AtbParser();
+        $silpo = $shop->SilpoParser();
+        $klass = $shop->KlassParser();
+        $posad = $shop->PosadParser();
+        $brusnichka = $shop->BrusnichkaParser();
+        $velmarket = $shop->VelmarketParser();
+        $tavria = $shop->TavriaParser();
+        $okwine = $shop->OkwineParser();
+        $antoshka = $shop->AntoshkaParser();
+
+//        if ($atb && $silpo && $klass && $posad && $tavria && $brusnichka && $velmarket && $okwine && $antoshka) {
+//
+//        }
     }
 }

@@ -10,62 +10,62 @@ class ShopsParser extends Model
     {
         $atb = new AtbParser();
         $atb->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 
     public function SilpoParser()
     {
         $silpo = new SilpoParser();
         $silpo->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 
     public function KlassParser()
     {
         $klass = new KlassParser();
         $klass->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 
     public function PosadParser()
     {
         $posad = new PosadParser();;
         $posad->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 
     public function BrusnichkaParser()
     {
         $brusnichka = new BrusnichkaParser();
         $brusnichka->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 
     public function VelmarketParser()
     {
         $velmarket = new VelmarketParser();
         $velmarket->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 
     public function TavriaParser()
     {
         $tavria = new TavriaParser();
         $tavria->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 
     public function OkwineParser()
     {
         $okwine = new OkwineParser();
         $okwine->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 
     public function AntoshkaParser()
     {
         $antoshka = new AntoshkaParser();
         $antoshka->parser();
-        return redirect()->route('promotions');
+        return 1;
     }
 }

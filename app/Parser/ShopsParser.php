@@ -68,4 +68,22 @@ class ShopsParser extends Model
         $antoshka->parser();
         return 1;
     }
+
+    public static function cronParser()
+    {
+        $shop = new ShopsParser();
+        $atb = $shop->AtbParser();
+        $silpo = $shop->SilpoParser();
+        $klass = $shop->KlassParser();
+        $posad = $shop->PosadParser();
+        $brusnichka = $shop->BrusnichkaParser();
+        $velmarket = $shop->VelmarketParser();
+        $tavria = $shop->TavriaParser();
+        $okwine = $shop->OkwineParser();
+        $antoshka = $shop->AntoshkaParser();
+
+//        if ($atb && $silpo && $klass && $posad && $tavria && $brusnichka && $velmarket && $okwine && $antoshka) {
+//
+//        }
+    }
 }

@@ -5,6 +5,11 @@ namespace App\Parser;
 use App\Parser\Parser;
 use phpQuery;
 use App\Product;
+use PJClient;
+use MSClics\PhantomJs;
+use JonnyW\PhantomJs\Client;
+
+
 
 class SilpoParser extends Parser
 {
@@ -20,8 +25,10 @@ class SilpoParser extends Parser
         ];
 
         foreach ($url as $u) {
-            $html = shell_exec("phantomjs js/parser.js $u");
-            dd($html);
+            $html = shell_exec("/phantomjs js/parser.js $u");
+            $client = Client::getInstance();
+            $html = $client->getMessageFactory()->createRequest($u, 'GET');
+//            dd($html);
             $doc = PhpQuery::newDocument($html);
 
             foreach ($doc->find(".product-list li.normal") as $div) {

@@ -5,6 +5,8 @@ namespace App\Parser;
 use App\Parser\Parser;
 use phpQuery;
 use App\Product;
+use JonnyW\PhantomJs\Client;
+use JonnyW\PhantomJs\DependencyInjection\ServiceContainer;
 
 class SilpoParser extends Parser
 {
@@ -20,9 +22,27 @@ class SilpoParser extends Parser
         ];
 
         foreach ($url as $u) {
-            $html = shell_exec("phantomjs js/parser.js $u");
-            dd($html);
-            $doc = PhpQuery::newDocument($html);
+
+//            $title = shell_exec("phantomjs js/main.js $u");
+//            print_r($title);
+
+            $location = 'js';
+
+            $serviceContainer = ServiceContainer::getInstance();
+
+            $procedureLoader = $serviceContainer->get('procedure_loader_factory')
+                ->createProcedureLoader($location);
+
+            $client = Client::getInstance();
+            $client->setProcedure('procedure');
+            $client->getProcedureLoader()->addLoader($procedureLoader);
+
+            $request  = $client->getMessageFactory()->createRequest();
+            $response = $client->getMessageFactory()->createResponse();
+
+            $client->send($request, $response);
+
+            $doc = PhpQuery::newDocument($client);
 
             foreach ($doc->find(".product-list li.normal") as $div) {
                 $div = pq($div);
@@ -75,6 +95,8 @@ class SilpoParser extends Parser
                 }
             }
         }
+
+        return true;
     }
 
     protected function SilpoShop($u, $start, $end)

@@ -3,7 +3,7 @@ var page = require('webpage').create(),
     url = system.args[1];
 
 page.open(url, function () {
-    page.injectJs('/js/jquery-1.12.3.min.js');
+    page.injectJs('jquery-1.12.3.min.js');
 
     page.onResourceRequested = function (requestData, request) {
         if ((/http:\/\/.+?\.css$/gi).test(requestData['url'])) {

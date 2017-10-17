@@ -23,7 +23,7 @@ page.open(url, function () {
 
 
     var html = page.evaluate(function() {
-        return $('body .product-list').html();
+        return $('body .actions-page').html();
 
     });
 

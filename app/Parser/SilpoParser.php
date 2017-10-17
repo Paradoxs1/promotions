@@ -23,16 +23,15 @@ class SilpoParser extends Parser
 
         foreach ($url as $u) {
 
-            $title = shell_exec("/usr/bin/phantomjs js/parser.js $u");
-
+            $title = shell_exec("/usr/bin/phantomjs /home/motions/public_html/promotions/app/Parser/js/parser.js $u");
             $doc = PhpQuery::newDocument($title);
-
+            ;
             foreach ($doc->find(".product-list li.normal") as $div) {
                 $div = pq($div);
 
                 $name = $div->find('.product-list__item-title')->text();
 
-                $img = $div->find('.product-list__item-image img')->attr('href');
+                $img = $div->find('.product-list__item-image img')->attr('src');
 
                 $price_old = $div->find('.product-price__old')->text();
 
@@ -42,6 +41,7 @@ class SilpoParser extends Parser
 
                 $price = (float)$price_old;
                 $price = number_format($price, 2, '.', '');
+
 
                 $price_dollar_sale = $div->find('.product-price__integer')->text();
                 $price_cent_sale = $div->find('.product-price__fraction')->text();

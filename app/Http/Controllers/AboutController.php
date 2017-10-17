@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Catalog;
 
 use DB;
 
@@ -12,9 +13,8 @@ class AboutController extends Controller
     {
         if (view()->exists('about')) {
 
-            $page = DB::select("select * from pages where name_page = ?", ['about']);
-
-            return view('about')->withPage($page[0]);
+            $catalog = Catalog::all();
+            return view('about')->withCatalog($catalog);
         }
         return view('index')->withTitle('View not found');
     }

@@ -23,26 +23,9 @@ class SilpoParser extends Parser
 
         foreach ($url as $u) {
 
-//            $title = shell_exec("phantomjs js/main.js $u");
-//            print_r($title);
+            $title = shell_exec("/usr/bin/phantomjs js/parser.js $u");
 
-            $location = 'js';
-
-            $serviceContainer = ServiceContainer::getInstance();
-
-            $procedureLoader = $serviceContainer->get('procedure_loader_factory')
-                ->createProcedureLoader($location);
-
-            $client = Client::getInstance();
-            $client->setProcedure('procedure');
-            $client->getProcedureLoader()->addLoader($procedureLoader);
-
-            $request  = $client->getMessageFactory()->createRequest();
-            $response = $client->getMessageFactory()->createResponse();
-
-            $client->send($request, $response);
-
-            $doc = PhpQuery::newDocument($client);
+            $doc = PhpQuery::newDocument($title);
 
             foreach ($doc->find(".product-list li.normal") as $div) {
                 $div = pq($div);

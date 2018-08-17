@@ -24,7 +24,7 @@ class MailSetting extends Controller
             $name = $request->name;
             $email = $request->email;
             $phone = $request->phone;
-            $comment = $request->comment;
+	        $comment = $request->comment;
 
             Mail::to('mdn81@ukr.net')->send(new MailClass($name, $email, $phone, $comment));
 

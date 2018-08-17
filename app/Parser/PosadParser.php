@@ -5,6 +5,7 @@ namespace App\Parser;
 use App\Parser\Parser;
 use phpQuery;
 use App\Product;
+use Illuminate\Support\Facades\Storage;
 
 class PosadParser extends Parser
 {
@@ -20,28 +21,29 @@ class PosadParser extends Parser
             $name_action = $posad->find(".entry-title")->text();
             $this->statusProductOff($name_action);
 
-            foreach ($posad->find(".ngg-galleryoverview > div") as $li) {
-                $li = pq($li);
+                foreach ($posad->find(".ngg-galleryoverview  .ngg-gallery-thumbnail-box") as $li) {
+                    $li = pq($li);
 
-                $img = $li->find('img')->attr('src');
+                    $img = $li->find('img')->attr('src');
 
-                $product = new Product();
+                    $product = new Product();
 
-                $product->name_action = $name_action;
-                $product->shop_id = "4";
-                $product->shop = '\images\posad-small.png';
-                $product->img = $img;
+                    $product->name_action = $name_action;
+                    $product->shop_id = "4";
+                    $product->shop = '\images\posad-small.png';
+                    $product->img = $img;
 
-                $oldProduct = Product::where('img', $img)->first();
+                    $oldProduct = Product::where('img', $img)->first();
 
-                if ($oldProduct) {
-                    $oldProduct->status = 1;
-                    $oldProduct->save();
-                } else {
-                    $product->save();
+                    if ($oldProduct) {
+                        $oldProduct->status = 1;
+                        $oldProduct->save();
+                    } else {
+                        $product->save();
+                    }
                 }
             }
-        }
+
 
         return true;
     }

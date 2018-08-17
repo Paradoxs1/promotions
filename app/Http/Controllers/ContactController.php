@@ -12,7 +12,7 @@ class ContactController extends Controller
     public function show()
     {
         $catalog = Catalog::all();
-        return view('contact')->withCatalog($catalog)->withTitle('promotions | contact');
+        return view('contact{id?}')->withCatalog($catalog)->withTitle('promotions | contact');
     }
 
 }

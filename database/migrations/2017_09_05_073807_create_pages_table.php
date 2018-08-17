@@ -15,14 +15,14 @@ class CreatePagesTable extends Migration
     {
         Schema::create('pages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name_page')->nullable()->change();
-            $table->string('title')->nullable()->change();
-            $table->string('h1')->nullable()->change();
-            $table->text('content1')->nullable()->default(NULL)->change();
-            $table->text('content2')->nullable()->default(NULL)->change();
-            $table->text('content3')->nullable()->default(NULL)->change();
-            $table->text('content4')->nullable()->default(NULL)->change();
-            $table->text('content5')->nullable()->default(NULL)->change();
+            $table->string('name_page')->nullable();
+            $table->string('title')->nullable();
+            $table->string('h1')->nullable();
+            $table->text('content1')->nullable()->default(NULL);
+            $table->text('content2')->nullable()->default(NULL);
+            $table->text('content3')->nullable()->default(NULL);
+            $table->text('content4')->nullable()->default(NULL);
+            $table->text('content5')->nullable()->default(NULL);
             $table->timestamps();
         });
     }
